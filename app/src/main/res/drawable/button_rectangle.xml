@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="120dp"
+    android:height="60dp"
+    android:viewportWidth="120"
+    android:viewportHeight="60"
+    >
+<!--    <group>-->
+<!--        <clip-path-->
+<!--            android:pathData="M10 0H110C115.523 0 120 4.47715 120 10V50C120 55.5228 115.523 60 110 60H10C4.47715 60 0 55.5228 0 50V10C0 4.47715 4.47715 0 10 0Z"-->
+<!--            />-->
+<!--        <path-->
+<!--            android:pathData="M10 0H110C115.523 0 120 4.47715 120 10V50C120 55.5228 115.523 60 110 60H10C4.47715 60 0 55.5228 0 50V10C0 4.47715 4.47715 0 10 0Z"-->
+<!--            android:strokeWidth="2"-->
+<!--            android:strokeColor="#FFFFFF"-->
+<!--            />-->
+<!--    </group>-->
+    <group>
+        <clip-path
+            android:pathData="M10 0H110C115.523 0 120 4.47715 120 10V50C120 55.5228 115.523 60 110 60H10C4.47715 60 0 55.5228 0 50V10C0 4.47715 4.47715 0 10 0Z"
+            />
+        <path
+            android:pathData="M10 0H110C115.523 0 120 4.47715 120 10V50C120 55.5228 115.523 60 110 60H10C4.47715 60 0 55.5228 0 50V10C0 4.47715 4.47715 0 10 0Z"
+            android:strokeWidth="2"
+            android:strokeColor="#FFFFFF"
+        />
+    </group>
+
+</vector>

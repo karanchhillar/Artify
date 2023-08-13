@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Aritify</string>
+    <string name="new_here_re">New Here? \nRegister</string>
+    <string name="already_a_m">Already a Member? Login</string>
+</resources>

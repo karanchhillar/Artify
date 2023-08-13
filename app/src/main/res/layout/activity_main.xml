@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_img"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="338dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="322dp"
+        android:fontFamily="@font/playfair_display"
+        android:gravity="top"
+        android:text="Login"
+        android:textAppearance="@style/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/email_text"
+        android:layout_width="309dp"
+        android:layout_height="50dp"
+        android:background="@drawable/background_rectangle"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="9dp"
+        android:textColor="#99FFFFFF"
+        android:textColorHint="#99FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="309dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/background_rectangle"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingStart="9dp"
+        android:textColor="#99FFFFFF"
+        android:textColorHint="#99FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/email_text"
+        app:layout_constraintTop_toBottomOf="@+id/email_text" />
+
+    <TextView
+        android:id="@+id/forgot_pass"
+        android:layout_width="140dp"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="26dp"
+        android:gravity="right|top"
+        android:text="Forgot Password?"
+        android:textAppearance="@style/forgot_pass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="233dp"
+        android:layout_marginTop="542dp"
+        android:background="@drawable/button_rectangle"
+        android:text="Login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="81dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="647dp"
+        android:layout_marginLeft="265dp"
+        android:text="@string/new_here_re"
+        android:textAppearance="@style/new_here_re"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="649dp"
+        android:layout_marginLeft="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/google_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
