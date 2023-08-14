@@ -1,15 +1,13 @@
 package com.example.aritify.login
 
 import android.content.Intent
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.WindowManager
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import com.example.aritify.R
 import com.example.aritify.databinding.ActivityLoginPageBinding
+import com.saadahmedsoft.shortintent.Anim
+import com.saadahmedsoft.shortintent.ShortIntent
 
 class LoginPage : AppCompatActivity() {
 
@@ -25,26 +23,36 @@ class LoginPage : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = this.resources.getColor(R.color.transparent)
 
+        binding.newHereRegisterText.setOnClickListener {
+            val intent = Intent(this@LoginPage, RegisterPage::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right)
+        }
+
+
 //        binding.newHereRegisterText.setOnClickListener {
-//            startActivity(Intent(this , RegisterPage::class.java))
+//            ShortIntent.getInstance(this).addDestination(RegisterPage::class.java)
+//                .addTransition(Anim.SPIN).finish(this)
+//
 //        }
 
-        binding.newHereRegisterText.setOnClickListener {
-            val fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
-            fadeOutAnimation.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationStart(animation: Animation?) {}
 
-                override fun onAnimationEnd(animation: Animation?) {
-                    val intent = Intent(this@LoginPage, RegisterPage::class.java)
-                    startActivity(intent)
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-                }
-
-                override fun onAnimationRepeat(animation: Animation?) {}
-            })
+//        binding.newHereRegisterText.setOnClickListener {
+//            val fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_out_right)
+//            fadeOutAnimation.setAnimationListener(object : Animation.AnimationListener {
+//                override fun onAnimationStart(animation: Animation?) {}
+//
+//                override fun onAnimationEnd(animation: Animation?) {
+//                    val intent = Intent(this@LoginPage, RegisterPage::class.java)
+//                    startActivity(intent)
+//                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+//                }
+//
+//                override fun onAnimationRepeat(animation: Animation?) {}
+//            })
 
             // Start fade-out animation
-            binding.newHereRegisterText.startAnimation(fadeOutAnimation)
-        }
+//            binding.newHereRegisterText.startAnimation(fadeOutAnimation)
+//        }
     }
 }

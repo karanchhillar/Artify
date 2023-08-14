@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_img2"
+    android:background="@drawable/back_img5"
     tools:context=".login.RegisterPage">
 
     <TextView
@@ -74,6 +74,7 @@
         app:strokeWidth="1dp" />
 
     <TextView
+        android:id="@+id/already_a_mem_text"
         android:layout_width="131dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="51dp"

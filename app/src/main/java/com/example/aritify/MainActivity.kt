@@ -3,6 +3,9 @@ package com.example.aritify
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import com.example.aritify.login.LoginPage
+import com.saadahmedsoft.shortintent.Anim
+import com.saadahmedsoft.shortintent.ShortIntent
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
