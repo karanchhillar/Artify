@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cart_bg"
+    tools:context=".cart.MyCart">
+
+    <RelativeLayout
+        android:id="@+id/rlnamedp"
+        android:layout_width="253dp"
+        android:layout_height="44dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp">
+        <TextView
+            android:layout_width="247dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Hey , KARAN "
+            android:textSize = "24sp"
+            android:letterSpacing="0.01"
+            android:textColor="#854E34"
+            android:layout_alignParentStart="true"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+
+            android:src="@drawable/person"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:fontFamily="@font/poppins_light"
+        android:letterSpacing="0.01"
+        android:text="Here is your list"
+        android:textColor="#BD9D96"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/rlnamedp"
+        app:layout_constraintTop_toBottomOf="@+id/rlnamedp" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@color/white"
+        android:layout_marginTop="133dp"
+        app:shapeAppearanceOverlay="@style/RoundedImageView"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="165dp"
+        android:fontFamily="@font/poppins_light"
+        android:letterSpacing="0.02"
+        android:text="Your Order"
+        android:textColor="#828282"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_my_chart"
+        app:layout_constraintBottom_toTopOf="@+id/rlitemPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <RelativeLayout
+        android:id="@+id/rlitemPrice"
+        android:layout_width="253dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/extendedFloatingActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="247dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/poppins_light"
+            android:letterSpacing="0.01"
+            android:text="N Items"
+            android:lineSpacingExtra="4sp"
+            android:textColor="#4F4F4F"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.01"
+            android:text="Total: $ 21.00"
+            android:lineSpacingExtra="4sp"
+            android:textColor="#4F4F4F"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extendedFloatingActionButton"
+        android:layout_width="250dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#61D9E8"
+        android:gravity="center"
+        android:text="PLACE ORDER"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:cornerRadius="2000dp"
+        app:icon="@drawable/cart_icon"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

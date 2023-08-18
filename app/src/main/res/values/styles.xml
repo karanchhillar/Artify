@@ -3,31 +3,62 @@
 
     <style name="login">
         <item name="android:textSize">36sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="forgot_pass">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="new_here_re">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="register">
         <item name="android:textSize">36sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="register_text">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="already_a_m">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="welcome">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/allerta</item>
+    </style>
+
+    <style name="welcome2">
+        <item name="android:textSize">27sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="top_cat_text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <style name="RoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">42dp</item> <!-- Adjust the corner radius as needed -->
+    </style>
+
+    <style name="RoundedImageViewCartItem">
+        <item name="cornerFamily">rounded</item>
+        <!-- Adjust the corner radius as needed -->
+        <item name="cornerSizeTopRight">30dp</item>
+        <item name="cornerSizeBottomRight">30dp</item>
     </style>
 </resources>

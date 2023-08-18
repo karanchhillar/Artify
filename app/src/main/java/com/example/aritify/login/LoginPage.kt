@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import com.example.aritify.MainActivity
 import com.example.aritify.R
 import com.example.aritify.databinding.ActivityLoginPageBinding
 import com.saadahmedsoft.shortintent.Anim
@@ -27,6 +28,13 @@ class LoginPage : AppCompatActivity() {
             val intent = Intent(this@LoginPage, RegisterPage::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right)
+        }
+
+
+
+
+        binding.loginButton.setOnClickListener {
+            startActivity(Intent(this , MainActivity::class.java))
         }
 
 
