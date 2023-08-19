@@ -21,6 +21,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/transparent"
-        app:strokeWidth="1dp" />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
