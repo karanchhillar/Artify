@@ -90,6 +90,20 @@ class LoginPage : AppCompatActivity() {
         }
 
 
+        binding.textView3.setOnClickListener {
+            if (binding.editTextEmail.text.toString().isEmpty()){
+                Toast.makeText(this,"Please Enter Email",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                auth.sendPasswordResetEmail(binding.editTextEmail.text.toString()).addOnSuccessListener {
+                    Toast.makeText(this, "Email has been sent to your email",Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Some Exception occured",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
 //        binding.newHereRegisterText.setOnClickListener {
 //            ShortIntent.getInstance(this).addDestination(RegisterPage::class.java)
 //                .addTransition(Anim.SPIN).finish(this)
