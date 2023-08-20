@@ -4,22 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/get_started"
+    android:background="@drawable/get_started1"
     tools:context=".login.GetStarted">
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/getStartedButton"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:backgroundTint="@color/transparent"
+        android:layout_height="60dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="@color/dark_orange"
+        android:text="Get Started"
         android:textAppearance="@style/register_text"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:strokeColor="@color/transparent"
+        app:strokeWidth="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

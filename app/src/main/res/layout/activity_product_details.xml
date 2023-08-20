@@ -146,7 +146,6 @@
 
     </LinearLayout>
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/extendedFloatingActionButton"
         android:layout_width="match_parent"
