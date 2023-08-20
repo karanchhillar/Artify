@@ -65,10 +65,16 @@ dependencies {
     // Also add the dependency for the Google Play services library and specify its version
     implementation("com.google.android.gms:play-services-auth:20.6.0")
 
+
+    implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
     //Progress Dialog Library
     implementation 'com.jpardogo.googleprogressbar:library:1.2.0'
 
     implementation 'com.github.amarjain07:StickyScrollView:1.0.3'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'mx.jesusmartinoza:sweet-password:0.2'
 }
