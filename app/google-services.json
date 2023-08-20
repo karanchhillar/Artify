@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "1014761608187",
+    "firebase_url": "https://artify-53e51-default-rtdb.firebaseio.com",
+    "project_id": "artify-53e51",
+    "storage_bucket": "artify-53e51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014761608187:android:0c048db91ab374ccc3f15e",
+        "android_client_info": {
+          "package_name": "com.example.aritify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014761608187-3gtaejmgc3otpbdtp10kg86cjcnrsl88.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aritify",
+            "certificate_hash": "323ea5a3c0f25fd6242880949dee0575ad199ee3"
+          }
+        },
+        {
+          "client_id": "1014761608187-i7ip8fr9lv9h9055irr92mfr0ljlfeg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aritify",
+            "certificate_hash": "cbada4152beca2c31dda3a0def4bfbcead1813b5"
+          }
+        },
+        {
+          "client_id": "1014761608187-dhmr6o8j80dc1pe79kc701lgpga20e8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVctd7vptmSs4XlRRuhEh9lVMMPxWznfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014761608187-3i7nqkj5klrgc0vfav9asmun33o0fvfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014761608187:android:53a2bef7609bd89dc3f15e",
+        "android_client_info": {
+          "package_name": "com.example.artifyseller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014761608187-i4e78ptc8a0fhj7eht5c6bmdtatunon2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.artifyseller",
+            "certificate_hash": "cbada4152beca2c31dda3a0def4bfbcead1813b5"
+          }
+        },
+        {
+          "client_id": "1014761608187-dhmr6o8j80dc1pe79kc701lgpga20e8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVctd7vptmSs4XlRRuhEh9lVMMPxWznfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014761608187-3i7nqkj5klrgc0vfav9asmun33o0fvfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
