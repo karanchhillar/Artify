@@ -125,13 +125,6 @@
                 android:textAppearance="@style/new_here_re"
                 android:textSize="21dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="View All"
-                android:textColor="@color/dark_orange"
-                android:textSize="17dp" />
         </LinearLayout>
 
         <LinearLayout
