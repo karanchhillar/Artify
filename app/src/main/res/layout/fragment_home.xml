@@ -141,6 +141,7 @@
             app:layout_constraintTop_toBottomOf="@id/ll_3">
 
             <LinearLayout
+                android:id="@+id/llmen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -151,17 +152,19 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img_virat"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 1"
+                    android:text="Men"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llwomen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -172,17 +175,19 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 2"
+                    android:text="Women"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lltoys"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -193,17 +198,19 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img_real_toy"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 3"
+                    android:text="Toys"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llbags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -214,13 +221,14 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img_real_bag"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 4"
+                    android:text="Bags"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
@@ -239,6 +247,7 @@
             app:layout_constraintTop_toBottomOf="@id/ll_4">
 
             <LinearLayout
+                android:id="@+id/llpainting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -249,17 +258,19 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img_painting"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 1"
+                    android:text="Painting"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llhomedecore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -270,17 +281,20 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img_real_home"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 2"
+                    android:textAlignment="center"
+                    android:text="Home Decor"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llpottery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -291,17 +305,19 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img_real_pot"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 3"
+                    android:text="Pottery"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llother"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -312,13 +328,14 @@
                     android:layout_width="85dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/app_logo" />
+                    android:src="@drawable/img_other"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Logo 4"
+                    android:text="Other"
                     android:textAppearance="@style/top_cat_text" />
             </LinearLayout>
 
@@ -375,6 +392,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/llartpeice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -385,10 +403,10 @@
                         android:layout_width="175dp"
                         android:layout_height="185dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/app_logo" />
+                        android:src="@drawable/painting" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <TextView
@@ -398,10 +416,13 @@
                             android:layout_weight="4"
                             android:maxLength="25"
                             android:layout_marginEnd="5dp"
-                            android:maxLines="@integer/material_motion_duration_long_2"
-                            android:text="Product name , details"
+                            android:textSize="18sp"
+                            android:text="Art Piece"
                             android:layout_marginStart="5dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textAppearance="@style/top_cat_text" />
+
 
                         <ImageView
                             android:layout_width="30dp"
@@ -413,11 +434,24 @@
 
 
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="5dp"
+                        android:text="Multicolor Aluminium Square African Modern Art Canvas Painting, Size: 24 X 24 Inches"
+
+                        android:textColor="@color/grey"
+                        android:layout_marginStart="5dp"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+
+                        android:textAppearance="@style/top_cat_text" />
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:layout_marginTop="5dp"
-                        android:text="₹9999"
+                        android:text="₹13499"
                         android:maxLength="10"
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
@@ -426,6 +460,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llpot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -436,10 +471,10 @@
                         android:layout_width="175dp"
                         android:layout_height="185dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/app_logo" />
+                        android:src="@drawable/pot" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <TextView
@@ -449,10 +484,13 @@
                             android:layout_weight="4"
                             android:maxLength="25"
                             android:layout_marginEnd="5dp"
-                            android:maxLines="@integer/material_motion_duration_long_2"
-                            android:text="Product name , details"
+                            android:textSize="18sp"
+                            android:text="Artistic Pot"
                             android:layout_marginStart="5dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textAppearance="@style/top_cat_text" />
+
 
                         <ImageView
                             android:layout_width="30dp"
@@ -464,15 +502,29 @@
 
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:layout_marginTop="5dp"
-                        android:text="₹9999"
-                        android:maxLength="10"
+                        android:text="Flower Pot- Ceramic Pot- Original and hand crafted  work"
+
+                        android:textColor="@color/grey"
                         android:layout_marginStart="5dp"
-                        android:textStyle="bold"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+
                         android:textAppearance="@style/top_cat_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:maxLength="10"
+                        android:text="₹2799"
+                        android:textAppearance="@style/top_cat_text"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -484,6 +536,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/lltoyhorse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -494,10 +547,10 @@
                         android:layout_width="175dp"
                         android:layout_height="185dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/app_logo" />
+                        android:src="@drawable/toy_horse" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <TextView
@@ -507,10 +560,13 @@
                             android:layout_weight="4"
                             android:maxLength="25"
                             android:layout_marginEnd="5dp"
-                            android:maxLines="@integer/material_motion_duration_long_2"
-                            android:text="Product name , details"
+                            android:textSize="18sp"
+                            android:text="Toy Horse"
                             android:layout_marginStart="5dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textAppearance="@style/top_cat_text" />
+
 
                         <ImageView
                             android:layout_width="30dp"
@@ -522,11 +578,24 @@
 
 
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="5dp"
+                        android:text="Toy for todlers"
+
+                        android:textColor="@color/grey"
+                        android:layout_marginStart="5dp"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+
+                        android:textAppearance="@style/top_cat_text" />
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:layout_marginTop="5dp"
-                        android:text="₹9999"
+                        android:text="₹599"
                         android:maxLength="10"
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
@@ -535,6 +604,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lljutebag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -545,10 +615,10 @@
                         android:layout_width="175dp"
                         android:layout_height="185dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/app_logo" />
+                        android:src="@drawable/jute_bag" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <TextView
@@ -558,10 +628,13 @@
                             android:layout_weight="4"
                             android:maxLength="25"
                             android:layout_marginEnd="5dp"
-                            android:maxLines="@integer/material_motion_duration_long_2"
-                            android:text="Product name , details"
+                            android:textSize="18sp"
+                            android:text="Jute Bag"
                             android:layout_marginStart="5dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:textAppearance="@style/top_cat_text" />
+
 
                         <ImageView
                             android:layout_width="30dp"
@@ -573,11 +646,24 @@
 
 
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="5dp"
+                        android:text="Bag for daily use made up of jute"
+
+                        android:textColor="@color/grey"
+                        android:layout_marginStart="5dp"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+
+                        android:textAppearance="@style/top_cat_text" />
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:layout_marginTop="5dp"
-                        android:text="₹9999"
+                        android:text="₹249"
                         android:maxLength="10"
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"

@@ -31,11 +31,45 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.llmen.setOnClickListener {
+
+            showAllProductCategory("Mens")
+
+        }
+        binding.llwomen.setOnClickListener {
+            showAllProductCategory("Womens")
+        }
+        binding.llhomedecore.setOnClickListener {
+            showAllProductCategory("Home Decor")
+        }
+        binding.llpottery.setOnClickListener {
+            showAllProductCategory("Pottery")
+        }
+        binding.llpainting.setOnClickListener {
+            showAllProductCategory("Painting")
+        }
+        binding.lltoys.setOnClickListener {
+            showAllProductCategory("Toys")
+        }
+        binding.llbags.setOnClickListener {
+            showAllProductCategory("Bags")
+        }
+        binding.llother.setOnClickListener {
+            showAllProductCategory("Others")
+        }
+
         binding.allProductViewAll.setOnClickListener {
-            startActivity(Intent(requireContext() , AllProduct::class.java))
+            showAllProductCategory("All Products")
         }
         binding.searchButton.setOnClickListener {
             startActivity(Intent(requireContext() , ProductDetails::class.java))
         }
+    }
+
+    private fun showAllProductCategory(s: String) {
+        val intent = Intent(requireContext(),AllProduct::class.java)
+        intent.putExtra("Category" , s)
+        startActivity(intent)
+
     }
 }

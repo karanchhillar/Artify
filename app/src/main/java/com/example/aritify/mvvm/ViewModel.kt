@@ -54,4 +54,23 @@ class ViewModel : ViewModel() {
         }catch (_: Exception){}
     }
 
+    val myCatItem = MutableLiveData<AllProductsData>()
+    fun retrive_item_data_category(collectionName : String) =viewModelScope.launch (Dispatchers.IO){
+        firestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
+        try {
+            firestore.collection("Category").document(collectionName)
+                .addSnapshotListener{value , error->
+
+                    if (error != null){
+                        return@addSnapshotListener
+                    }
+                    if (value!!.exists()) {
+                        val itemData = value.toObject(AllProductsData::class.java)
+                        myCatItem.value = itemData!!
+                    }
+                }
+        }catch (_: Exception){}
+    }
+
 }

@@ -25,6 +25,11 @@ class AllProduct : AppCompatActivity() {
         binding = ActivityAllProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val category = intent.getStringExtra("Category")
+
+
+        binding.categoryTextView2.setText(category)
+
         val window = this.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -34,12 +39,22 @@ class AllProduct : AppCompatActivity() {
         val allProductAdapter = AllProductAdapter()
 
 
-        vm.myItem.observe(this, Observer {
-            allProductAdapter.setItemList1(it)
-            allProductAdapter.notifyDataSetChanged()
+        if (category == "All Products") {
+            vm.myItem.observe(this, Observer {
+                allProductAdapter.setItemList1(it)
+                allProductAdapter.notifyDataSetChanged()
 //            allProductAdapter.setItemList1(it)
-            Toast.makeText(this, "${it.price[0]}", Toast.LENGTH_SHORT).show()
-        })
+                Toast.makeText(this, "${it.price[0]}", Toast.LENGTH_SHORT).show()
+            })
+        }else{
+            vm.retrive_item_data_category(category!!)
+            vm.myCatItem.observe(this, Observer {
+                allProductAdapter.setItemList1(it)
+                allProductAdapter.notifyDataSetChanged()
+//            allProductAdapter.setItemList1(it)
+                Toast.makeText(this, "${it.price[0]}", Toast.LENGTH_SHORT).show()
+            })
+        }
 
         binding.productRecylerview.adapter = allProductAdapter
 

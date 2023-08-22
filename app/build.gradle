@@ -79,5 +79,5 @@ dependencies {
 
     implementation 'mx.jesusmartinoza:sweet-password:0.2'
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
 }
