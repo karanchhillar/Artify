@@ -31,15 +31,23 @@ class AllProductAdapter : RecyclerView.Adapter<ItemViewHolder>() {
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val n = itemList.price.size - position -1
 
-        val currentProductName : String = itemList.productName[n]
-        val currentproductImage : String = itemList.productImage[n]
-        val currentproductDetails: String = itemList.productDescription[n]
-        val currentproductPrice: Int = itemList.price[n]
+//        val position = getAdapterPosition();
+        if(n != RecyclerView.NO_POSITION){
+            // you can trust the adapter position
+            // do whatever you intend to do with this position
 
-        holder.productName.text = currentProductName
-        holder.productDetails.text = currentproductDetails
-        holder.price.text = "₹ $currentproductPrice"
-        Picasso.get().load(currentproductImage).into(holder.productImage)
+            val currentProductName : String = itemList.product_name[n]
+            val currentproductImage : String = itemList.product_image[n]
+            val currentproductDetails: String = itemList.product_description[n]
+            val currentproductPrice: Int = itemList.price[n]
+
+            holder.productName.text = currentProductName
+            holder.productDetails.text = currentproductDetails
+            holder.price.text = "₹ $currentproductPrice"
+            Picasso.get().load(currentproductImage).into(holder.productImage)
+        }
+
+
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.aritify
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ class AllProduct : AppCompatActivity() {
     private lateinit var binding: ActivityAllProductBinding
     private lateinit var vm : ViewModel
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAllProductBinding.inflate(layoutInflater)
@@ -28,19 +30,18 @@ class AllProduct : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = this.resources.getColor(R.color.transparent)
 
-
-        vm = ViewModelProvider(this).get(ViewModel::class.java)
+        vm = ViewModelProvider(this)[ViewModel::class.java]
         val allProductAdapter = AllProductAdapter()
 
 
         vm.myItem.observe(this, Observer {
             allProductAdapter.setItemList1(it)
+            allProductAdapter.notifyDataSetChanged()
+//            allProductAdapter.setItemList1(it)
             Toast.makeText(this, "${it.price[0]}", Toast.LENGTH_SHORT).show()
         })
 
-        binding.productRecylerview.layoutManager = LinearLayoutManager(this)
         binding.productRecylerview.adapter = allProductAdapter
-
 
     }
 }
