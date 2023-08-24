@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -35,26 +36,32 @@ class AllProduct : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = this.resources.getColor(R.color.transparent)
 
-        vm = ViewModelProvider(this)[ViewModel::class.java]
+        vm = ViewModelProvider(this@AllProduct)[ViewModel::class.java]
         val allProductAdapter = AllProductAdapter()
 
+        var size = 1
 
         if (category == "All Products") {
             vm.myItem.observe(this, Observer {
+                size = it.price.size
+                if (size != 0) binding.noProdImg.isVisible = false
                 allProductAdapter.setItemList1(it)
                 allProductAdapter.notifyDataSetChanged()
-//            allProductAdapter.setItemList1(it)
-                Toast.makeText(this, "${it.price[0]}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Total item:${it.price.size}", Toast.LENGTH_SHORT).show()
             })
         }else{
             vm.retrive_item_data_category(category!!)
             vm.myCatItem.observe(this, Observer {
+                size = it.price.size
+                if (size != 0) binding.noProdImg.isVisible = false
                 allProductAdapter.setItemList1(it)
                 allProductAdapter.notifyDataSetChanged()
-//            allProductAdapter.setItemList1(it)
-                Toast.makeText(this, "${it.price[0]}", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(this, "Total item:${it.price.size}", Toast.LENGTH_SHORT).show()
             })
         }
+
+
 
         binding.productRecylerview.adapter = allProductAdapter
 

@@ -8,6 +8,7 @@ import com.example.aritify.MyApplication
 import com.example.aritify.Utils
 import com.example.aritify.dataclasses.AllProductsData
 import com.example.aritify.dataclasses.OrderDetail
+import com.example.aritify.dataclasses.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -72,5 +73,19 @@ class ViewModel : ViewModel() {
                 }
         }catch (_: Exception){}
     }
+
+    fun retrive_user_data(callback: (User) -> Unit) {
+        val firestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
+
+        firestore.collection("user").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { documentSnapshot ->
+            if (documentSnapshot.exists()) {
+                val value = documentSnapshot.toObject(User::class.java)
+                callback(value!!)
+            }
+        }
+    }
+
+
 
 }
