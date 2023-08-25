@@ -5,12 +5,13 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PlaceOrder(
-    var product_id : List<String> = emptyList(),
-    var product_name :  List<String> = emptyList(),
-    var price : List<Int> = emptyList(),
-    var product_description : List<String> = emptyList(),
-    var product_image : List<String> = emptyList(),
-    var available_quantity : List<String> = emptyList(),
-    var seller_id : List<String> = emptyList()
+    var product_id : MutableList<String> = mutableListOf(),
+    var product_name :  MutableList<String> = mutableListOf(),
+    var price : MutableList<Int> = mutableListOf(),
+    var product_description : MutableList<String> = mutableListOf(),
+    var product_image : MutableList<String> = mutableListOf(),
+    var available_quantity : MutableList<String> = mutableListOf(),
+    var seller_id : MutableList<String> = mutableListOf()
 ): Parcelable
+
 

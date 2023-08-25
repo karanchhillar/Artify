@@ -8,6 +8,7 @@ import com.example.aritify.MyApplication
 import com.example.aritify.Utils
 import com.example.aritify.dataclasses.AllProductsData
 import com.example.aritify.dataclasses.OrderDetail
+import com.example.aritify.dataclasses.PlaceOrder
 import com.example.aritify.dataclasses.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -21,6 +22,8 @@ class ViewModel : ViewModel() {
     private lateinit var auth : FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
+
+    val my_cart = PlaceOrder()
     init {
         retrive_item_data()
     }
