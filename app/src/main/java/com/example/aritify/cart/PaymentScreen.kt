@@ -1,13 +1,13 @@
 package com.example.aritify.cart
 
+//import com.example.aritify.DataBinderMapperImpl
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-//import com.example.aritify.DataBinderMapperImpl
 import com.example.aritify.R
 import com.example.aritify.adapter.CartAdapter
 import com.example.aritify.databinding.ActivityPaymentScreenBinding
@@ -33,7 +33,10 @@ class PaymentScreen : AppCompatActivity() {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             // Safe to use getMccString
-            single_data = intent.getParcelableExtra("single_order_detail", PlaceOrder::class.java)!!
+            single_data= intent.extras!!.getParcelable("single_order_detail")!!
+
+            Toast.makeText(this@PaymentScreen, "${single_data.price[0]}", Toast.LENGTH_SHORT).show()
+//            single_data = intent.getParcelableExtra("single_order_detail", PlaceOrder::class.java)!!
 
         } else {
             // Use something else that could work if there's something

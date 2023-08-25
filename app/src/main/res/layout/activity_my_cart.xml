@@ -88,7 +88,7 @@
         android:layout_height="26dp"
         android:layout_marginBottom="30dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/extendedFloatingActionButton"
+        app:layout_constraintBottom_toTopOf="@+id/efaAddToCart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -116,7 +116,7 @@
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/extendedFloatingActionButton"
+        android:id="@+id/efaAddToCart"
         android:layout_width="250dp"
         android:layout_height="53dp"
         android:layout_marginBottom="40dp"

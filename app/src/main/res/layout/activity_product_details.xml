@@ -41,6 +41,7 @@
                 android:textSize="20dp" />
 
             <ImageView
+
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/heart"
@@ -118,7 +119,7 @@
             >
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgminusicon"
                 android:layout_width="30dp"
                 android:layout_weight="1"
                 android:layout_height="30dp"
@@ -133,13 +134,14 @@
                 android:layout_marginEnd="4dp"
                 android:textStyle="bold"
                 android:textSize="18dp"
+
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:text="1" />
 
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imgplusicon"
                 android:layout_width="30dp"
                 android:layout_weight="1"
                 android:layout_height="30dp"
@@ -151,7 +153,7 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/extendedFloatingActionButton"
+            android:id="@+id/efaAddToCart"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginBottom="15dp"
