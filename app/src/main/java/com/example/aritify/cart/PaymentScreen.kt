@@ -9,7 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aritify.R
-import com.example.aritify.adapter.CartAdapter
+import com.example.aritify.adapter.PlaceOrderAdapter
 import com.example.aritify.databinding.ActivityPaymentScreenBinding
 import com.example.aritify.dataclasses.PlaceOrder
 
@@ -29,13 +29,13 @@ class PaymentScreen : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = this.resources.getColor(R.color.transparent)
 
-        val adapter = CartAdapter()
+        val adapter = PlaceOrderAdapter()
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             // Safe to use getMccString
             single_data= intent.extras!!.getParcelable("single_order_detail")!!
 
-            Toast.makeText(this@PaymentScreen, "${single_data.price[0]}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@PaymentScreen, "${single_data.price[0]}", Toast.LENGTH_SHORT).show()
 //            single_data = intent.getParcelableExtra("single_order_detail", PlaceOrder::class.java)!!
 
         } else {

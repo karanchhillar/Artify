@@ -20,7 +20,7 @@ class MyCart : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = this.resources.getColor(R.color.transparent)
 
-        binding.extendedFloatingActionButton.setOnClickListener{
+        binding.placeOrderButton.setOnClickListener{
             startActivity(Intent(this , PaymentScreen::class.java))
         }
     }

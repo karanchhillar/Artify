@@ -21,9 +21,6 @@ class ViewModel : ViewModel() {
     private lateinit var database : FirebaseDatabase
     private lateinit var auth : FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-
-
-    val my_cart = PlaceOrder()
     init {
         retrive_item_data()
     }

@@ -116,7 +116,7 @@
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/efaAddToCart"
+        android:id="@+id/place_order_button"
         android:layout_width="250dp"
         android:layout_height="53dp"
         android:layout_marginBottom="40dp"

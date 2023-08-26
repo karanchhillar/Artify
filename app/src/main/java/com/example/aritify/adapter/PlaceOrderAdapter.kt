@@ -8,7 +8,7 @@ import com.example.aritify.databinding.OrderPaymentListBinding
 import com.example.aritify.dataclasses.PlaceOrder
 import com.squareup.picasso.Picasso
 
-class CartAdapter: RecyclerView.Adapter<OrderViewHolder>()  {
+class PlaceOrderAdapter: RecyclerView.Adapter<OrderViewHolder>()  {
 
     var itemList = PlaceOrder()
     private lateinit var binding : OrderPaymentListBinding
@@ -42,7 +42,6 @@ class CartAdapter: RecyclerView.Adapter<OrderViewHolder>()  {
     override fun getItemCount(): Int {
         return itemList.price.size
     }
-
 }
 
 class OrderViewHolder(binding: OrderPaymentListBinding) : RecyclerView.ViewHolder(binding.root){

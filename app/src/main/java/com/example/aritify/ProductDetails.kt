@@ -9,16 +9,18 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.aritify.cart.PaymentScreen
 import com.example.aritify.databinding.ActivityProductDetailsBinding
-import com.example.aritify.databinding.ProductsItemListBinding
+import com.example.aritify.dataclasses.AllProductsData
 import com.example.aritify.dataclasses.PlaceOrder
 import com.example.aritify.mvvm.ViewModel
-import com.google.firebase.database.PropertyName
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 
 class ProductDetails : AppCompatActivity() {
 
     private lateinit var binding : ActivityProductDetailsBinding
     private lateinit var vm : ViewModel
+    private lateinit var auth : FirebaseAuth
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,6 @@ class ProductDetails : AppCompatActivity() {
 
         val viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         vm = ViewModelProvider(this,viewModelFactory)[ViewModel::class.java]
-
 
 
         val window = this.window
@@ -53,9 +54,8 @@ class ProductDetails : AppCompatActivity() {
 
         binding.imgplusicon.setOnClickListener {
 
-            var curr_val = binding.setQuantity.text.toString().toInt()
-            Toast.makeText(this, "${currentProductQuantity!!.toInt()}", Toast.LENGTH_SHORT).show()
-            if (curr_val == currentProductQuantity.toInt()){
+            val curr_val = binding.setQuantity.text.toString().toInt()
+            if (curr_val == currentProductQuantity.toString().toInt()){
                 Toast.makeText(this, "Can't Buy More", Toast.LENGTH_SHORT).show()
             }
             else{
@@ -63,7 +63,7 @@ class ProductDetails : AppCompatActivity() {
             }
         }
         binding.imgminusicon.setOnClickListener {
-            var curr_val = binding.setQuantity.text.toString().toInt()
+            val curr_val = binding.setQuantity.text.toString().toInt()
             if (curr_val == 1){
                 Toast.makeText(this, "Can't Be Less Then 0", Toast.LENGTH_SHORT).show()
             }
@@ -72,35 +72,165 @@ class ProductDetails : AppCompatActivity() {
             }
         }
 
-        binding.efaAddToCart.setOnClickListener{
+//        binding.efaAddToCart.setOnClickListener {
+//            auth = FirebaseAuth.getInstance()
+//
+//            val cart =AllProductsData(
+//                listOf(productID!!)
+//                listOf(!!)
+//            )
+//        }
 
-//            Toast.makeText(this, "${binding.efaAddToCart.text}", Toast.LENGTH_SHORT).show()
+        binding.efaAddToCart.setOnClickListener{
+            val firestore = FirebaseFirestore.getInstance()
+            val auth = FirebaseAuth.getInstance()
+            val itemAddRef = firestore.collection("Cart").document(auth.currentUser?.uid.toString())
             if (binding.efaAddToCart.text == "Add To Cart"){
-                vm.my_cart.product_id.add(productID!!)
-                vm.my_cart.product_name.add(currentProductName!!)
-                vm.my_cart.price.add(currentProductPrice!!)
-                vm.my_cart.product_description.add(currentProductDetails!!)
-                vm.my_cart.product_image.add(currentProductImage!!)
-                vm.my_cart.available_quantity.add(binding.setQuantity.text.toString()!!)
-                vm.my_cart.seller_id.add(currentSellerId!!)
-                binding.efaAddToCart.text = "Remove From Cart"
-                Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProductDetails, "hello${binding.efaAddToCart.text}", Toast.LENGTH_SHORT).show()
+                itemAddRef.get().addOnSuccessListener {
+                    if (it.exists()) {
+                        val productId = it.get("product_id") as List<*>
+                        val newProductID = productId.toMutableList()
+
+                        if(newProductID.contains(productID)) {
+                            val index = newProductID.indexOf(productID)
+                            val setQuantity = it.get("set_quantity") as List<*>
+                            val newSetQuantity = setQuantity.toMutableList()
+                            val value = newSetQuantity[index].toString().toInt() + binding.setQuantity.text.toString().toInt()
+                            newSetQuantity[index] = value.toString()
+
+                            itemAddRef.update(hashMapOf("set_quantity" to newSetQuantity) as Map<String, Any>)
+                                .addOnSuccessListener {
+                                    binding.efaAddToCart.text = "Remove From Cart"
+                                    Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(
+                                        this@ProductDetails,
+                                        "${it.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+
+                        else {
+                            newProductID.add(productID)
+
+                            val productName = it.get("product_name") as List<*>
+                            val newProductName = productName.toMutableList()
+                            newProductName.add(currentProductName)
+
+                            val productDetails = it.get("product_details") as List<*>
+                            val newProductDetails = productDetails.toMutableList()
+                            newProductDetails.add(currentProductDetails)
+
+                            val productPrice = it.get("price") as List<*>
+                            val newPrice = productPrice.toMutableList()
+                            newPrice.add(currentProductPrice)
+
+                            val setQuantity = it.get("set_quantity") as List<*>
+                            val newSetQuantity = setQuantity.toMutableList()
+                            newSetQuantity.add(binding.setQuantity.text.toString())
+
+                            val sellerId = it.get("seller_id") as List<*>
+                            val newSellerID = sellerId.toMutableList()
+                            newSellerID.add(currentSellerId)
+
+                            val productImage = it.get("product_image") as List<*>
+                            val newProductImage = productImage.toMutableList()
+                            newProductImage.add(currentProductImage)
+
+
+                            itemAddRef.update(
+                                hashMapOf(
+                                    "product_id" to newProductID,
+                                    "product_name" to newProductName,
+                                    "product_details" to newProductDetails,
+                                    "price" to newPrice,
+                                    "set_quantity" to newSetQuantity,
+                                    "seller_id" to newSellerID,
+                                    "product_image" to newProductImage
+                                ) as Map<String, Any>
+                            ).addOnSuccessListener {
+                                binding.efaAddToCart.text = "Remove From Cart"
+                                Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+                            }
+                                .addOnFailureListener {
+                                    Toast.makeText(
+                                        this@ProductDetails,
+                                        "${it.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+                    } else {
+                        val itemData = hashMapOf(
+                            "product_id" to listOf(productID),
+                            "product_name" to listOf(currentProductName),
+                            "product_details" to listOf(currentProductDetails),
+                            "price" to listOf(currentProductPrice),
+                            "set_quantity" to listOf(binding.setQuantity.text.toString()),
+                            "seller_id" to listOf(currentSellerId),
+                            "product_image" to listOf(currentProductImage),
+                        )
+                        itemAddRef.set(itemData).addOnSuccessListener {
+                            binding.efaAddToCart.text = "Remove From Cart"
+                            Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+                        }
+                            .addOnFailureListener {
+                                Toast.makeText(this@ProductDetails, "${it.message}", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                }
             }
             else{
-                vm.my_cart.product_id.removeLast()
-                vm.my_cart.product_name.removeLast()
-                vm.my_cart.price.removeLast()
-                vm.my_cart.product_description.removeLast()
-                vm.my_cart.product_image.removeLast()
-                vm.my_cart.available_quantity.removeLast()
-                vm.my_cart.seller_id.removeLast()
-                binding.efaAddToCart.text = "Add To Cart"
-                Toast.makeText(this, "Removed To Cart", Toast.LENGTH_SHORT).show()
+                itemAddRef.get().addOnSuccessListener {
+                    val productId = it.get("product_id") as List<*>
+                    val newProductID = productId.toMutableList()
+                    val index = newProductID.indexOf(productID)
+                    newProductID.removeAt(index)
+
+                    val productName = it.get("product_name") as List<*>
+                    val newProductName = productName.toMutableList()
+                    newProductName.removeAt(index)
+
+                    val productDetails = it.get("product_details") as List<*>
+                    val newProductDetails = productDetails.toMutableList()
+                    newProductDetails.removeAt(index)
+
+                    val productPrice = it.get("price") as List<*>
+                    val newPrice = productPrice.toMutableList()
+                    newPrice.removeAt(index)
+
+                    val setQuantity = it.get("set_quantity") as List<*>
+                    val newSetQuantity = setQuantity.toMutableList()
+                    newSetQuantity.removeAt(index)
+
+                    val sellerId = it.get("seller_id") as List<*>
+                    val newSellerID = sellerId.toMutableList()
+                    newSellerID.removeAt(index)
+
+                    val productImage = it.get("product_image") as List<*>
+                    val newProductImage = productImage.toMutableList()
+                    newProductImage.removeAt(index)
+
+                    itemAddRef.update(hashMapOf(
+                        "product_id" to newProductID,
+                        "product_name" to newProductName,
+                        "product_details" to newProductDetails,
+                        "price" to newPrice,
+                        "set_quantity" to newSetQuantity,
+                        "seller_id" to newSellerID,
+                        "product_image" to newProductImage
+                    ) as Map<String, Any>).addOnSuccessListener {
+                        binding.efaAddToCart.text = "Add To Cart"
+                        Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+                    }
+                        .addOnFailureListener {
+                            Toast.makeText(this@ProductDetails, "${it.message}", Toast.LENGTH_SHORT).show()
+                        }
+                }
             }
-
-//
-
-
         }
 
         binding.extendedFloatingActionButton2.setOnClickListener {
