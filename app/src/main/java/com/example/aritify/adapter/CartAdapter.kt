@@ -1,5 +1,6 @@
 package com.example.aritify.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -33,6 +34,7 @@ class CartAdapter : RecyclerView.Adapter<Order2ViewHolder>(){
         return itemList.price.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: Order2ViewHolder, position: Int) {
         val n = itemList.price.size - position -1
 
@@ -45,6 +47,7 @@ class CartAdapter : RecyclerView.Adapter<Order2ViewHolder>(){
         val currentSellerId : String = itemList.seller_id[n]
 
         val currentValue = itemTotal_price.value ?: 0
+        var change = 0
 //        val currentValue2 = itemTotal_quantity.value ?: 1
 
 //        val temp = itemTotal_price.value// when user delete the product
@@ -59,9 +62,11 @@ class CartAdapter : RecyclerView.Adapter<Order2ViewHolder>(){
 
         holder.plus_button.setOnClickListener {
             val quant = holder.quantity.text.toString().toInt() + 1
-            itemTotal_price.value = currentproductPrice*(currentproductQuantity.toString().toInt()-1)
+//            change = change + currentproductPrice
+//            itemTotal_price.value = change
 //            itemTotal_price.value =  currentproductPrice
             holder.quantity.text = quant.toString()
+            notifyDataSetChanged()
             holder.change_quantity(currentProductId , quant)
         }
         holder.minus_button.setOnClickListener {
@@ -71,7 +76,10 @@ class CartAdapter : RecyclerView.Adapter<Order2ViewHolder>(){
                 quant = 1
                 return@setOnClickListener
             }
-            itemTotal_price.value = currentproductPrice*(currentproductQuantity.toString().toInt()-1)
+            notifyDataSetChanged()
+//            change = change - currentproductPrice
+//            itemTotal_price.value = change
+//            itemTotal_price.value = currentproductPrice*(currentproductQuantity.toString().toInt()-1)
 //            itemTotal_price.value = currentproductPrice
             holder.quantity.text = quant.toString()
             holder.change_quantity(currentProductId , quant)
