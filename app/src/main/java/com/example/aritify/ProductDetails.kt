@@ -27,8 +27,8 @@ class ProductDetails : AppCompatActivity() {
         binding = ActivityProductDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        vm = ViewModelProvider(this,viewModelFactory)[ViewModel::class.java]
+//        val viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+//        vm = ViewModelProvider(this,viewModelFactory)[ViewModel::class.java]
 
 
         val window = this.window
@@ -86,7 +86,7 @@ class ProductDetails : AppCompatActivity() {
             val auth = FirebaseAuth.getInstance()
             val itemAddRef = firestore.collection("Cart").document(auth.currentUser?.uid.toString())
             if (binding.efaAddToCart.text == "Add To Cart"){
-                Toast.makeText(this@ProductDetails, "hello${binding.efaAddToCart.text}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProductDetails, "${binding.efaAddToCart.text}", Toast.LENGTH_SHORT).show()
                 itemAddRef.get().addOnSuccessListener {
                     if (it.exists()) {
                         val productId = it.get("product_id") as List<*>
@@ -94,12 +94,12 @@ class ProductDetails : AppCompatActivity() {
 
                         if(newProductID.contains(productID)) {
                             val index = newProductID.indexOf(productID)
-                            val setQuantity = it.get("set_quantity") as List<*>
+                            val setQuantity = it.get("available_quantity") as List<*>
                             val newSetQuantity = setQuantity.toMutableList()
                             val value = newSetQuantity[index].toString().toInt() + binding.setQuantity.text.toString().toInt()
                             newSetQuantity[index] = value.toString()
 
-                            itemAddRef.update(hashMapOf("set_quantity" to newSetQuantity) as Map<String, Any>)
+                            itemAddRef.update(hashMapOf("available_quantity" to newSetQuantity) as Map<String, Any>)
                                 .addOnSuccessListener {
                                     binding.efaAddToCart.text = "Remove From Cart"
                                     Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
@@ -120,7 +120,7 @@ class ProductDetails : AppCompatActivity() {
                             val newProductName = productName.toMutableList()
                             newProductName.add(currentProductName)
 
-                            val productDetails = it.get("product_details") as List<*>
+                            val productDetails = it.get("product_description") as List<*>
                             val newProductDetails = productDetails.toMutableList()
                             newProductDetails.add(currentProductDetails)
 
@@ -128,7 +128,7 @@ class ProductDetails : AppCompatActivity() {
                             val newPrice = productPrice.toMutableList()
                             newPrice.add(currentProductPrice)
 
-                            val setQuantity = it.get("set_quantity") as List<*>
+                            val setQuantity = it.get("available_quantity") as List<*>
                             val newSetQuantity = setQuantity.toMutableList()
                             newSetQuantity.add(binding.setQuantity.text.toString())
 
@@ -145,9 +145,9 @@ class ProductDetails : AppCompatActivity() {
                                 hashMapOf(
                                     "product_id" to newProductID,
                                     "product_name" to newProductName,
-                                    "product_details" to newProductDetails,
+                                    "product_description" to newProductDetails,
                                     "price" to newPrice,
-                                    "set_quantity" to newSetQuantity,
+                                    "available_quantity" to newSetQuantity,
                                     "seller_id" to newSellerID,
                                     "product_image" to newProductImage
                                 ) as Map<String, Any>
@@ -167,9 +167,9 @@ class ProductDetails : AppCompatActivity() {
                         val itemData = hashMapOf(
                             "product_id" to listOf(productID),
                             "product_name" to listOf(currentProductName),
-                            "product_details" to listOf(currentProductDetails),
+                            "product_description" to listOf(currentProductDetails),
                             "price" to listOf(currentProductPrice),
-                            "set_quantity" to listOf(binding.setQuantity.text.toString()),
+                            "available_quantity" to listOf(binding.setQuantity.text.toString()),
                             "seller_id" to listOf(currentSellerId),
                             "product_image" to listOf(currentProductImage),
                         )
@@ -194,7 +194,7 @@ class ProductDetails : AppCompatActivity() {
                     val newProductName = productName.toMutableList()
                     newProductName.removeAt(index)
 
-                    val productDetails = it.get("product_details") as List<*>
+                    val productDetails = it.get("product_description") as List<*>
                     val newProductDetails = productDetails.toMutableList()
                     newProductDetails.removeAt(index)
 
@@ -202,7 +202,7 @@ class ProductDetails : AppCompatActivity() {
                     val newPrice = productPrice.toMutableList()
                     newPrice.removeAt(index)
 
-                    val setQuantity = it.get("set_quantity") as List<*>
+                    val setQuantity = it.get("available_quantity") as List<*>
                     val newSetQuantity = setQuantity.toMutableList()
                     newSetQuantity.removeAt(index)
 
@@ -217,9 +217,9 @@ class ProductDetails : AppCompatActivity() {
                     itemAddRef.update(hashMapOf(
                         "product_id" to newProductID,
                         "product_name" to newProductName,
-                        "product_details" to newProductDetails,
+                        "product_description" to newProductDetails,
                         "price" to newPrice,
-                        "set_quantity" to newSetQuantity,
+                        "available_quantity" to newSetQuantity,
                         "seller_id" to newSellerID,
                         "product_image" to newProductImage
                     ) as Map<String, Any>).addOnSuccessListener {

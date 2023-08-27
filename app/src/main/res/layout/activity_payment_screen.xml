@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     tools:context=".cart.PaymentScreen"
-    android:layout_marginTop="20dp"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,31 +36,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_bold"
-            android:letterSpacing="0.02"
-            android:text="Your Order"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/your_order_recyclerView"
+        <LinearLayout
+            android:id="@+id/tv_and_rv_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/order_payment_list"
-            android:layout_marginTop="5dp"
+            android:layout_height="0dp"
+            android:maxHeight="500dp"
+            app:layout_constraintHeight_max="500dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing="0.02"
+                android:text="Your Order"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/your_order_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView7"
@@ -75,7 +83,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/your_order_recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_and_rv_ll" />
 
         <EditText
             android:id="@+id/name3"
@@ -84,13 +92,13 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
-            android:fontFamily="sans-serif"
             android:background="@drawable/edit_text_bg_grey"
+            android:backgroundTint="#FDECCD"
+            android:fontFamily="sans-serif"
             android:hint="Name"
             android:maxLines="1"
-            android:paddingStart="5dp"
-            android:backgroundTint="#FDECCD"
             android:minLines="1"
+            android:paddingStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,12 +111,12 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="15dp"
-            android:paddingStart="5dp"
-            android:fontFamily="sans-serif"
             android:background="@drawable/edit_text_bg_grey"
-            android:hint="Enter Address"
             android:backgroundTint="#FDECCD"
+            android:fontFamily="sans-serif"
+            android:hint="Enter Address"
             android:maxLines="3"
+            android:paddingStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,8 +160,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
                         android:layout_marginEnd="5dp"
+                        android:layout_weight="0.1"
                         android:orientation="vertical">
 
                         <ImageView
@@ -176,38 +184,38 @@
                         android:id="@+id/radioGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="100"
-                        android:padding="5dp"
                         android:layout_gravity="center"
-                        android:checkedButton="@+id/radio_button_1">
+                        android:layout_weight="100"
+                        android:checkedButton="@+id/radio_button_1"
+                        android:padding="5dp">
 
                         <RadioButton
                             android:id="@+id/radio_button_1"
+                            style="@style/radionbutton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layoutDirection="rtl"
-                            style="@style/radionbutton"
-                            android:text="Paytm"
                             android:layout_weight="1"
+                            android:layoutDirection="rtl"
+                            android:text="Paytm"
+                            android:textAlignment="textStart"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
                             android:textSize="18sp"
-                            android:textAlignment="textStart" />
+                            android:textStyle="bold" />
 
                         <RadioButton
                             android:id="@+id/radio_button_2"
+                            style="@style/radionbutton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layoutDirection="rtl"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:textColor="@color/black"
-                            style="@style/radionbutton"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
+                            android:layoutDirection="rtl"
                             android:text="Cash On Delivery"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -240,8 +248,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -253,21 +261,22 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:textStyle="bold"
                     android:text="₹ 4,000"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -284,10 +293,10 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:textStyle="bold"
-                    android:textColor="@color/teal_200"
                     android:text="Free"
-                    android:textSize="20sp" />
+                    android:textColor="@color/teal_200"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <View
@@ -298,8 +307,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -307,20 +316,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Grand Total"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/grand_totol_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:text="₹ 4,000"
-                    android:textSize="22sp" />
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -328,10 +338,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/dark_orange"
                 android:text="Pay Now"
                 app:cornerRadius="15dp"
-                android:layout_marginBottom="20dp"
                 tools:textSize="19sp" />
         </LinearLayout>
 

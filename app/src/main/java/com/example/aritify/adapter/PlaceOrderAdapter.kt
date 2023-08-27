@@ -3,6 +3,7 @@ package com.example.aritify.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aritify.databinding.OrderPaymentListBinding
 import com.example.aritify.dataclasses.PlaceOrder
@@ -12,6 +13,8 @@ class PlaceOrderAdapter: RecyclerView.Adapter<OrderViewHolder>()  {
 
     var itemList = PlaceOrder()
     private lateinit var binding : OrderPaymentListBinding
+    var itemTotal_price = MutableLiveData<Int>(0)
+
 
     fun setItemList1(item : PlaceOrder){
         itemList = item
@@ -31,6 +34,10 @@ class PlaceOrderAdapter: RecyclerView.Adapter<OrderViewHolder>()  {
         val currentproductDetails: String = itemList.product_description[n]
         val currentproductPrice: Int = itemList.price[n]
         val currentproductQuantity: String = itemList.available_quantity[n]
+
+        val currentValue = itemTotal_price.value ?: 0
+
+        itemTotal_price.value = currentValue + (currentproductPrice * currentproductQuantity.toString().toInt())
 
         holder.productName.text = currentProductName
         holder.productDetails.text = currentproductDetails

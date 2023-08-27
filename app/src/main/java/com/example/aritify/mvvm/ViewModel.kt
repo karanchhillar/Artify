@@ -23,6 +23,7 @@ class ViewModel : ViewModel() {
     private lateinit var firestore: FirebaseFirestore
     init {
         retrive_item_data()
+        retrive_cart_data()
     }
 
     fun placeOrder(order : OrderDetail) {
@@ -69,6 +70,25 @@ class ViewModel : ViewModel() {
                     if (value!!.exists()) {
                         val itemData = value.toObject(AllProductsData::class.java)
                         myCatItem.value = itemData!!
+                    }
+                }
+        }catch (_: Exception){}
+    }
+
+    val myCartItem = MutableLiveData<PlaceOrder>()
+    fun retrive_cart_data() =viewModelScope.launch (Dispatchers.IO){
+        firestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
+        try {
+            firestore.collection("Cart").document(auth.currentUser?.uid.toString())
+                .addSnapshotListener{value , error->
+
+                    if (error != null){
+                        return@addSnapshotListener
+                    }
+                    if (value!!.exists()) {
+                        val itemData = value.toObject(PlaceOrder::class.java)
+                        myCartItem.value = itemData!!
                     }
                 }
         }catch (_: Exception){}
