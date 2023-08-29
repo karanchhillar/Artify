@@ -1,5 +1,6 @@
 package com.example.aritify.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import com.example.aritify.R
 import com.example.aritify.databinding.FragmentHomeBinding
 import com.example.aritify.databinding.FragmentMicBinding
+import com.example.aritify.login.GetStarted
 import com.google.firebase.auth.FirebaseAuth
 
 class MicFragment : Fragment(){
@@ -34,6 +36,7 @@ class MicFragment : Fragment(){
 
         binding.logoutButton.setOnClickListener {
             auth.signOut()
+            activity?.startActivity(Intent(activity , GetStarted::class.java))
             activity?.finish()
         }
     }

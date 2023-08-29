@@ -70,7 +70,17 @@ class RegisterPage : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful){
                         Toast.makeText(this, "New Id created", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MainActivity::class.java))
+
+                        auth.currentUser?.sendEmailVerification()?.addOnSuccessListener {
+                            Toast.makeText(this, "Email has been sent to your mail", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                            ?.addOnFailureListener {
+                                Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        auth.signOut()
+                        startActivity(Intent(this, LoginPage::class.java))
                     }
                     else{
                         Toast.makeText(this, "${task.exception}", Toast.LENGTH_SHORT).show()

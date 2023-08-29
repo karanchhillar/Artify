@@ -68,13 +68,22 @@ class LoginPage : AppCompatActivity() {
             auth.signInWithEmailAndPassword(emailInput , passwordInput)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful){
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
+
+                        val verification = auth.currentUser?.isEmailVerified
+                        if (verification == true){
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        }
+                        else{
+                            Toast.makeText(this, "Please verify Your Email (check in spam)", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
                     else{
                         Toast.makeText(this, "${task.exception}", Toast.LENGTH_SHORT).show()
                     }
                 }
+
         }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -102,32 +111,6 @@ class LoginPage : AppCompatActivity() {
                 }
             }
         }
-
-
-//        binding.newHereRegisterText.setOnClickListener {
-//            ShortIntent.getInstance(this).addDestination(RegisterPage::class.java)
-//                .addTransition(Anim.SPIN).finish(this)
-//
-//        }
-
-
-//        binding.newHereRegisterText.setOnClickListener {
-//            val fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_out_right)
-//            fadeOutAnimation.setAnimationListener(object : Animation.AnimationListener {
-//                override fun onAnimationStart(animation: Animation?) {}
-//
-//                override fun onAnimationEnd(animation: Animation?) {
-//                    val intent = Intent(this@LoginPage, RegisterPage::class.java)
-//                    startActivity(intent)
-//                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
-//                }
-//
-//                override fun onAnimationRepeat(animation: Animation?) {}
-//            })
-
-            // Start fade-out animation
-//            binding.newHereRegisterText.startAnimation(fadeOutAnimation)
-//        }
     }
 
     private fun signInGoogle() {
