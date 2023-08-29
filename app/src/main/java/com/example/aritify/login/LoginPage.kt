@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.aritify.MainActivity
 import com.example.aritify.R
+import com.example.aritify.UserInformation
 import com.example.aritify.databinding.ActivityLoginPageBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -71,7 +72,7 @@ class LoginPage : AppCompatActivity() {
 
                         val verification = auth.currentUser?.isEmailVerified
                         if (verification == true){
-                            startActivity(Intent(this, MainActivity::class.java))
+                            startActivity(Intent(this, UserInformation::class.java))
                             finish()
                         }
                         else{
@@ -141,7 +142,7 @@ class LoginPage : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener{
                 if (it.isSuccessful){
-                    val intent : Intent = Intent(this , MainActivity::class.java)
+                    val intent : Intent = Intent(this , UserInformation::class.java)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this , it.exception.toString() , Toast.LENGTH_SHORT).show()

@@ -1,9 +1,8 @@
 package com.example.aritify.dataclasses
 
-data class User(
+data class ArtifyUser(
     var name : String ?= null ,
     var phone_number : Long ?= null ,
-    var email : String ?= null ,
     var DOB : String ?= null ,
     var address : String ?= null ,
     var profile_photo : String ?= null

@@ -50,9 +50,11 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="New Delhi , India"
+                    android:ellipsize="end"
                     android:textAppearance="@style/new_here_re"
                     android:textStyle="bold" />
 

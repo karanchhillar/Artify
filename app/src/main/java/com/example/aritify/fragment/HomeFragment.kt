@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.aritify.AllProduct
 import com.example.aritify.ProductDetails
 import com.example.aritify.R
+import com.example.aritify.UserInformation
 import com.example.aritify.databinding.FragmentHomeBinding
 import com.example.aritify.mvvm.ViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -46,9 +47,11 @@ class HomeFragment : Fragment() {
 
         vm.retrive_user_data {
             Picasso.get().load(it.profile_photo).into(binding.profilePhoto)
+            binding.address.text = it.address
         }
-
-
+        binding.profilePhoto.setOnClickListener{
+            startActivity(Intent(activity , UserInformation::class.java))
+        }
         binding.llmen.setOnClickListener {
             showAllProductCategory("Mens")
         }
@@ -86,6 +89,5 @@ class HomeFragment : Fragment() {
         val intent = Intent(requireContext(),AllProduct::class.java)
         intent.putExtra("Category" , s)
         startActivity(intent)
-
     }
 }

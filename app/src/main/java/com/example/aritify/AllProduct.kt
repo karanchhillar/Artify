@@ -28,7 +28,6 @@ class AllProduct : AppCompatActivity() {
 
         val category = intent.getStringExtra("Category")
 
-
         binding.categoryTextView2.setText(category)
 
         val window = this.window
