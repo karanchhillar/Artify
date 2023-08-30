@@ -12,7 +12,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -55,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="New Delhi , India"
                     android:ellipsize="end"
+                    android:maxLines="1"
                     android:textAppearance="@style/new_here_re"
                     android:textStyle="bold" />
 
@@ -85,9 +85,29 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-            <EditText
-                android:id="@+id/editTextEmail1"
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/editTextSearchBar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_weight="3"-->
+<!--                    android:background="@drawable/edit_text_bg_grey"-->
+<!--                    android:drawableStart="@drawable/baseline_search_24"-->
+<!--                    android:drawablePadding="8dp"-->
+<!--                    android:hint="Search"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:inputType="text"-->
+<!--                    android:imeOptions="actionSend"-->
+<!--                    android:padding="14dp" />-->
+<!--                -->
+<!--            </LinearLayout>-->
+            <AutoCompleteTextView
+                android:id="@+id/autocomplete_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -97,8 +117,10 @@
                 android:drawablePadding="8dp"
                 android:hint="Search"
                 android:layout_marginEnd="10dp"
-                android:inputType="textEmailAddress"
-                android:padding="14dp" />
+                android:inputType="text"
+                android:imeOptions="actionSend"
+                android:padding="14dp"
+                />
 
             <ImageView
                 android:id="@+id/search_button"

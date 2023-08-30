@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
+    android:background="@color/dark_orange"
     tools:context=".UserInformation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
+        android:background="@color/white"
         tools:ignore="ScrollViewSize">
 
         <RelativeLayout
@@ -30,8 +32,8 @@
                 android:gravity="center"
                 android:text="Profile Page"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
@@ -41,16 +43,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="80dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="10dp"
-            android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/profile_photo"
+                android:id="@+id/ui_profile_photo"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
@@ -93,24 +95,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textColor="@color/dark_orange"
                 android:paddingStart="10dp"
                 android:paddingBottom="3dp"
-                android:textSize="18sp"
-                />
+                android:text="Name"
+                android:textColor="@color/dark_orange"
+                android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/name_text"
+                android:id="@+id/ui_name_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter name"
-                android:padding="12dp"
-                android:maxLines="1"
                 android:background="@drawable/edittext_background"
+                android:hint="Enter name"
+                android:maxLines="1"
+                android:padding="12dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
+
                 />
 
 
@@ -126,99 +127,119 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="10dp"
                 android:paddingTop="16dp"
+                android:paddingBottom="3dp"
                 android:text="Phone Number"
                 android:textColor="@color/dark_orange"
-                android:paddingStart="10dp"
-                android:paddingBottom="3dp"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
             <!-- Edit Text for Price -->
             <EditText
-                android:id="@+id/phone_number_text"
+                android:id="@+id/ui_phone_number_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edittext_background"
                 android:hint="Enter phone number"
                 android:inputType="phone"
-                android:padding="12dp"
                 android:maxLines="1"
-                android:background="@drawable/edittext_background"
+                android:padding="12dp"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                />
+                android:textSize="16sp" />
 
             <!-- Available Quantity -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="10dp"
                 android:paddingTop="16dp"
+                android:paddingBottom="3dp"
                 android:text="Date Of Birth"
                 android:textColor="@color/dark_orange"
-                android:paddingStart="10dp"
-                android:paddingBottom="3dp"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
             <!-- Edit Text for Available Quantity -->
             <EditText
-                android:id="@+id/date_of_birth_text"
+                android:id="@+id/ui_date_of_birth_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edittext_background"
                 android:hint="DD/MM/YYYY"
                 android:inputType="date"
-                android:padding="12dp"
                 android:maxLines="1"
-                android:background="@drawable/edittext_background"
+                android:padding="12dp"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                />
+                android:textSize="16sp" />
 
             <!-- Product Description -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:paddingStart="10dp"
                 android:paddingTop="16dp"
+                android:paddingBottom="3dp"
                 android:text="Address"
                 android:textColor="@color/dark_orange"
-                android:paddingStart="10dp"
-                android:paddingBottom="3dp"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
             <!-- Edit Text for Product Description -->
             <EditText
-                android:id="@+id/address_text"
+                android:id="@+id/ui_address_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edittext_background"
                 android:gravity="top"
                 android:hint="Enter Address"
                 android:maxLines="5"
                 android:minLines="4"
                 android:padding="12dp"
-                android:background="@drawable/edittext_background"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                />
+                android:textSize="16sp" />
 
             <Button
-                android:id="@+id/save_button"
+                android:id="@+id/ui_save_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:backgroundTint="@color/dark_orange"
                 android:text="SAVE"
+                android:elevation="5dp"
+                android:layout_marginBottom="30dp"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
         </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5">
+
+
+            <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+                android:id="@+id/pg3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                app:type="chrome_floating_circles" />
+
+        </RelativeLayout>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

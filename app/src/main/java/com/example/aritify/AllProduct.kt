@@ -48,7 +48,8 @@ class AllProduct : AppCompatActivity() {
                 allProductAdapter.notifyDataSetChanged()
                 Toast.makeText(this, "Total item:${it.price.size}", Toast.LENGTH_SHORT).show()
             })
-        }else{
+        }
+        else{
             vm.retrive_item_data_category(category!!)
             vm.myCatItem.observe(this, Observer {
                 size = it.price.size

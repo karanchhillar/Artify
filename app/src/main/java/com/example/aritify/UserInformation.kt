@@ -6,13 +6,18 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.provider.MediaStore
+import android.text.TextUtils
+import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.aritify.databinding.ActivityUserInformationBinding
 import com.example.aritify.dataclasses.ArtifyUser
@@ -21,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
+import kotlin.concurrent.timer
 
 class UserInformation : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
@@ -47,19 +53,34 @@ class UserInformation : AppCompatActivity() {
 
 
         vm.retrive_user_data{
-            binding.nameText.setText(it.name.toString())
-            binding.phoneNumberText.setText(it.phone_number.toString())
-            binding.dateOfBirthText.setText(it.DOB.toString())
-            binding.addressText.setText(it.address.toString())
-            Picasso.get().load(it.profile_photo).into(binding.profilePhoto)
+            binding.uiNameText.setText(it.name.toString())
+            binding.uiPhoneNumberText.setText(it.phone_number.toString())
+            binding.uiDateOfBirthText.setText(it.DOB.toString())
+            binding.uiAddressText.setText(it.address.toString())
+            Picasso.get().load(it.profile_photo).into(binding.uiProfilePhoto)
             imageWhenNotChanged = it.profile_photo
         }
 
-        binding.profilePhoto.setOnClickListener {
+        binding.uiProfilePhoto.setOnClickListener {
             imageOptionDialogue()
         }
-        binding.saveButton.setOnClickListener {
+
+        binding.uiSaveButton.setOnClickListener {
+            val nameInput = binding.uiNameText.text.toString()
+            val phoneNumberInput = binding.uiPhoneNumberText.text.toString()
+            val dobInput = binding.uiDateOfBirthText.text.toString()
+            val addressInput = binding.uiAddressText.text.toString()
+
+            binding.pg3.visibility = View.VISIBLE
+
+            if (TextUtils.isEmpty(nameInput) || TextUtils.isEmpty(phoneNumberInput) || TextUtils.isEmpty(dobInput) || TextUtils.isEmpty(addressInput)) {
+                Toast.makeText(this, "Cannot be Empty", Toast.LENGTH_SHORT).show()
+                binding.pg3.visibility = View.GONE
+                return@setOnClickListener
+            }
+
             uploadImageToStorage()
+
             startActivity(Intent(this , MainActivity::class.java))
             finish()
         }
@@ -83,10 +104,10 @@ class UserInformation : AppCompatActivity() {
                 val task = it.metadata?.reference?.downloadUrl
                 task?.addOnSuccessListener {
                     selectedImg = it
-                    val user = ArtifyUser(binding.nameText.text.toString() ,
-                        binding.phoneNumberText.text.toString().toLong() ,
-                        binding.dateOfBirthText.text.toString(),
-                        binding.addressText.text.toString(),
+                    val user = ArtifyUser(binding.uiNameText.text.toString() ,
+                        binding.uiPhoneNumberText.text.toString().toLong() ,
+                        binding.uiDateOfBirthText.text.toString(),
+                        binding.uiAddressText.text.toString(),
                         selectedImg.toString())
 
                     vm.upload_user_data(user)
@@ -95,17 +116,22 @@ class UserInformation : AppCompatActivity() {
                     ?.addOnFailureListener {
                         Toast.makeText(this, "task failed", Toast.LENGTH_SHORT).show()
                     }
+                binding.pg3.visibility = View.GONE
+
+
             }
         }else if (photoClicked == 0){
             auth = FirebaseAuth.getInstance()
-            val user = ArtifyUser(binding.nameText.text.toString() ,
-                binding.phoneNumberText.text.toString().toLong() ,
-                binding.dateOfBirthText.text.toString(),
-                binding.addressText.text.toString(),
+            val user = ArtifyUser(binding.uiNameText.text.toString() ,
+                binding.uiPhoneNumberText.text.toString().toLong() ,
+                binding.uiDateOfBirthText.text.toString(),
+                binding.uiAddressText.text.toString(),
                 imageWhenNotChanged.toString())
 
             vm.upload_user_data(user)
             Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+            binding.pg3.visibility = View.GONE
+
         }
 
     }
@@ -155,14 +181,14 @@ class UserInformation : AppCompatActivity() {
                 1 -> {
                     imageBitmap = data?.extras?.get("data") as Bitmap
                     try {
-                        binding.profilePhoto.setImageBitmap(imageBitmap)
+                        binding.uiProfilePhoto.setImageBitmap(imageBitmap)
                     }catch (e: Exception){}
                 }
                 2 -> {
                     val imageUri = data?.data
                     imageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
                     try {
-                        binding.profilePhoto.setImageBitmap(imageBitmap)
+                        binding.uiProfilePhoto.setImageBitmap(imageBitmap)
                     }catch (e :Exception){
                     }
                 }

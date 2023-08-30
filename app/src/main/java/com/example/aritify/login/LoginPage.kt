@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,8 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.saadahmedsoft.shortintent.Anim
-import com.saadahmedsoft.shortintent.ShortIntent
+
 
 class LoginPage : AppCompatActivity() {
 
@@ -33,6 +33,7 @@ class LoginPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val window = this.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -56,12 +57,15 @@ class LoginPage : AppCompatActivity() {
         }
 
         binding.signupButton.setOnClickListener {
+//            binding.loginPb.visibility = View.VISIBLE
+            binding.pg1.visibility = View.VISIBLE
 
             val emailInput = email.text.toString()
             val passwordInput = password.text.toString()
 
             if (TextUtils.isEmpty(emailInput) || TextUtils.isEmpty(passwordInput) ){
                 Toast.makeText(this, "Cannot be Empty", Toast.LENGTH_SHORT).show()
+                binding.pg1.visibility = View.GONE
                 return@setOnClickListener
             }
 
@@ -69,21 +73,24 @@ class LoginPage : AppCompatActivity() {
             auth.signInWithEmailAndPassword(emailInput , passwordInput)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful){
-
                         val verification = auth.currentUser?.isEmailVerified
                         if (verification == true){
                             startActivity(Intent(this, UserInformation::class.java))
+                            binding.pg1.visibility = View.GONE
                             finish()
                         }
                         else{
+                            binding.pg1.visibility = View.GONE
                             Toast.makeText(this, "Please verify Your Email (check in spam)", Toast.LENGTH_SHORT)
                                 .show()
                         }
                     }
                     else{
+                        binding.pg1.visibility = View.GONE
                         Toast.makeText(this, "${task.exception}", Toast.LENGTH_SHORT).show()
                     }
                 }
+//            binding.loginPb.visibility = View.INVISIBLE
 
         }
 
@@ -96,11 +103,14 @@ class LoginPage : AppCompatActivity() {
 
 
         binding.imageViewGoogle.setOnClickListener{
+            binding.pg1.visibility = View.VISIBLE
             signInGoogle()
         }
 
 
         binding.textView3.setOnClickListener {
+            binding.pg1.visibility = View.VISIBLE
+
             if (binding.editTextEmail.text.toString().isEmpty()){
                 Toast.makeText(this,"Please Enter Email",Toast.LENGTH_SHORT).show()
             }
@@ -111,6 +121,8 @@ class LoginPage : AppCompatActivity() {
                     Toast.makeText(this, "Some Exception occured",Toast.LENGTH_SHORT).show()
                 }
             }
+            binding.pg1.visibility = View.GONE
+
         }
     }
 
@@ -142,6 +154,7 @@ class LoginPage : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener{
                 if (it.isSuccessful){
+                    binding.pg1.visibility = View.INVISIBLE
                     val intent : Intent = Intent(this , UserInformation::class.java)
                     startActivity(intent)
                 }else{
