@@ -8,6 +8,7 @@
     tools:context=".AllProduct">
 
     <ImageView
+        android:id="@+id/all_product_back_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="25dp"

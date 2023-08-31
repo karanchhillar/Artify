@@ -24,6 +24,7 @@
 
 
             <ImageView
+                android:id="@+id/product_details_back_button"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/back_icon"

@@ -30,6 +30,9 @@ class ProductDetails : AppCompatActivity() {
 //        val viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
 //        vm = ViewModelProvider(this,viewModelFactory)[ViewModel::class.java]
 
+        binding.productDetailsBackButton.setOnClickListener {
+            finish()
+        }
 
         val window = this.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)

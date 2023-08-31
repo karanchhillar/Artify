@@ -37,6 +37,10 @@ class PaymentScreen : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = this.resources.getColor(R.color.transparent)
 
+        binding.paymentScreenBackButton.setOnClickListener {
+            finish()
+        }
+
         val myCart : String? = intent.getStringExtra("my_cart")
         vm = ViewModelProvider(this)[ViewModel::class.java]
 

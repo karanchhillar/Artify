@@ -11,6 +11,7 @@ import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.aritify.AllProduct
@@ -63,6 +64,21 @@ class HomeFragment : Fragment() {
             textView.setAdapter(adapter)
         })
 
+        binding.searchButton.setOnClickListener {
+            intentValues( "Results" , binding.autocompleteSearch.text.toString())
+        }
+
+        binding.autocompleteSearch.setOnEditorActionListener { v, actionId, event ->
+            return@setOnEditorActionListener when (actionId) {
+                EditorInfo.IME_ACTION_SEND -> {
+                    intentValues( "Results" , binding.autocompleteSearch.text.toString())
+                    true
+                }
+                else -> false
+            }
+        }
+
+
         binding.profilePhoto.setOnClickListener{
             startActivity(Intent(activity , UserInformation::class.java))
         }
@@ -95,27 +111,13 @@ class HomeFragment : Fragment() {
             showAllProductCategory("All Products")
         }
 
-        val searchBarText = binding.autocompleteSearch.text.toString()
-        val searchBar = "1"
+    }
 
-        binding.searchButton.setOnClickListener {
-            val intent = Intent(requireContext() , AllProduct::class.java)
-            intent.putExtra("search_text" , searchBarText)
-            intent.putExtra("search_bar_value" , searchBar)
-            startActivity(intent)
-        }
-        binding.autocompleteSearch.setOnEditorActionListener { v, actionId, event ->
-            return@setOnEditorActionListener when (actionId) {
-                EditorInfo.IME_ACTION_SEND -> {
-                    val intent = Intent(requireContext() , AllProduct::class.java)
-                    intent.putExtra("search_text" , searchBarText)
-                    intent.putExtra("search_bar_value" , searchBar)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
-        }
+    private fun intentValues(s: String, valueOfSearch: String) {
+        val intent = Intent(requireContext(),AllProduct::class.java)
+        intent.putExtra("Category" , s)
+        intent.putExtra("search_text" , valueOfSearch)
+        startActivity(intent)
     }
 
     private fun showAllProductCategory(s: String) {

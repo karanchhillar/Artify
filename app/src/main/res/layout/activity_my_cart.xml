@@ -114,6 +114,7 @@
             android:letterSpacing="0.01"
             android:lineSpacingExtra="4sp"
             android:text="Total: $ 21.00"
+            android:visibility="invisible"
             android:textColor="#4F4F4F"
             android:textSize="18sp" />
     </RelativeLayout>
