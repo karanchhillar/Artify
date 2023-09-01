@@ -112,6 +112,159 @@ class ViewModel : ViewModel() {
         }
     }
 
+//    fun upload_cart_data(text : String , productID : String , quantity : String){
+//
+//        val firestore = FirebaseFirestore.getInstance()
+//        val auth = FirebaseAuth.getInstance()
+//        val itemAddRef = firestore.collection("Cart").document(auth.currentUser?.uid.toString())
+//        if (text == "Add To Cart"){
+//            Toast.makeText(MyApplication.getAppContext(), text, Toast.LENGTH_SHORT).show()
+//            itemAddRef.get().addOnSuccessListener {
+//                if (it.exists()) {
+//                    val productId = it.get("product_id") as List<*>
+//                    val newProductID = productId.toMutableList()
+//
+//                    if(newProductID.contains(productID)) {
+//                        val index = newProductID.indexOf(productID)
+//                        val setQuantity = it.get("available_quantity") as List<*>
+//                        val newSetQuantity = setQuantity.toMutableList()
+//                        val value = newSetQuantity[index].toString().toInt() + quantity.toInt()
+//                        newSetQuantity[index] = value.toString()
+//
+//                        itemAddRef.update(hashMapOf("available_quantity" to newSetQuantity) as Map<String, Any>)
+//                            .addOnSuccessListener {
+//                                binding.efaAddToCart.text = "Remove From Cart"
+//                                Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+//                            }
+//                            .addOnFailureListener {
+//                                Toast.makeText(
+//                                    MyApplication.getAppContext(),
+//                                    "${it.message}",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                    }
+//
+//                    else {
+//                        newProductID.add(productID)
+//
+//                        val productName = it.get("product_name") as List<*>
+//                        val newProductName = productName.toMutableList()
+//                        newProductName.add(currentProductName)
+//
+//                        val productDetails = it.get("product_description") as List<*>
+//                        val newProductDetails = productDetails.toMutableList()
+//                        newProductDetails.add(currentProductDetails)
+//
+//                        val productPrice = it.get("price") as List<*>
+//                        val newPrice = productPrice.toMutableList()
+//                        newPrice.add(currentProductPrice)
+//
+//                        val setQuantity = it.get("available_quantity") as List<*>
+//                        val newSetQuantity = setQuantity.toMutableList()
+//                        newSetQuantity.add(binding.setQuantity.text.toString())
+//
+//                        val sellerId = it.get("seller_id") as List<*>
+//                        val newSellerID = sellerId.toMutableList()
+//                        newSellerID.add(currentSellerId)
+//
+//                        val productImage = it.get("product_image") as List<*>
+//                        val newProductImage = productImage.toMutableList()
+//                        newProductImage.add(currentProductImage)
+//
+//
+//                        itemAddRef.update(
+//                            hashMapOf(
+//                                "product_id" to newProductID,
+//                                "product_name" to newProductName,
+//                                "product_description" to newProductDetails,
+//                                "price" to newPrice,
+//                                "available_quantity" to newSetQuantity,
+//                                "seller_id" to newSellerID,
+//                                "product_image" to newProductImage
+//                            ) as Map<String, Any>
+//                        ).addOnSuccessListener {
+//                            binding.efaAddToCart.text = "Remove From Cart"
+//                            Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+//                        }
+//                            .addOnFailureListener {
+//                                Toast.makeText(
+//                                    this@ProductDetails,
+//                                    "${it.message}",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                    }
+//                } else {
+//                    val itemData = hashMapOf(
+//                        "product_id" to listOf(productID),
+//                        "product_name" to listOf(currentProductName),
+//                        "product_description" to listOf(currentProductDetails),
+//                        "price" to listOf(currentProductPrice),
+//                        "available_quantity" to listOf(binding.setQuantity.text.toString()),
+//                        "seller_id" to listOf(currentSellerId),
+//                        "product_image" to listOf(currentProductImage),
+//                    )
+//                    itemAddRef.set(itemData).addOnSuccessListener {
+//                        binding.efaAddToCart.text = "Remove From Cart"
+//                        Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+//                    }
+//                        .addOnFailureListener {
+//                            Toast.makeText(this@ProductDetails, "${it.message}", Toast.LENGTH_SHORT).show()
+//                        }
+//                }
+//            }
+//        }
+//        else{
+//            itemAddRef.get().addOnSuccessListener {
+//                val productId = it.get("product_id") as List<*>
+//                val newProductID = productId.toMutableList()
+//                val index = newProductID.indexOf(productID)
+//                newProductID.removeAt(index)
+//
+//                val productName = it.get("product_name") as List<*>
+//                val newProductName = productName.toMutableList()
+//                newProductName.removeAt(index)
+//
+//                val productDetails = it.get("product_description") as List<*>
+//                val newProductDetails = productDetails.toMutableList()
+//                newProductDetails.removeAt(index)
+//
+//                val productPrice = it.get("price") as List<*>
+//                val newPrice = productPrice.toMutableList()
+//                newPrice.removeAt(index)
+//
+//                val setQuantity = it.get("available_quantity") as List<*>
+//                val newSetQuantity = setQuantity.toMutableList()
+//                newSetQuantity.removeAt(index)
+//
+//                val sellerId = it.get("seller_id") as List<*>
+//                val newSellerID = sellerId.toMutableList()
+//                newSellerID.removeAt(index)
+//
+//                val productImage = it.get("product_image") as List<*>
+//                val newProductImage = productImage.toMutableList()
+//                newProductImage.removeAt(index)
+//
+//                itemAddRef.update(hashMapOf(
+//                    "product_id" to newProductID,
+//                    "product_name" to newProductName,
+//                    "product_description" to newProductDetails,
+//                    "price" to newPrice,
+//                    "available_quantity" to newSetQuantity,
+//                    "seller_id" to newSellerID,
+//                    "product_image" to newProductImage
+//                ) as Map<String, Any>).addOnSuccessListener {
+//                    binding.efaAddToCart.text = "Add To Cart"
+//                    Toast.makeText(this, "Added To Cart", Toast.LENGTH_SHORT).show()
+//                }
+//                    .addOnFailureListener {
+//                        Toast.makeText(this@ProductDetails, "${it.message}", Toast.LENGTH_SHORT).show()
+//                    }
+//            }
+//        }
+//    }
+
 
 
 }

@@ -5,11 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     tools:context=".cart.PaymentScreen"
+    android:layout_marginTop="20dp"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         tools:context=".cart.PaymentScreen">
 
         <ImageView
@@ -41,13 +43,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:maxHeight="500dp"
-            app:layout_constraintHeight_max="500dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="500dp"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/payment_screen_back_button"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/payment_screen_back_button">
 
             <TextView
                 android:id="@+id/textView"
@@ -65,8 +66,7 @@
                 android:id="@+id/your_order_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                />
+                android:layout_marginTop="5dp" />
 
         </LinearLayout>
 
@@ -88,39 +88,60 @@
         <EditText
             android:id="@+id/name3"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/edit_text_bg_grey"
-            android:backgroundTint="#FDECCD"
-            android:fontFamily="sans-serif"
-            android:hint="Name"
             android:maxLines="1"
+            android:padding="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="@drawable/edittext_background"
+            android:inputType="text"
+            android:hint="Name"
             android:minLines="1"
-            android:paddingStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <EditText
-            android:id="@+id/address"
+            android:id="@+id/payment_phone_text"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Phone Number"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/edit_text_bg_grey"
-            android:backgroundTint="#FDECCD"
-            android:fontFamily="sans-serif"
-            android:hint="Enter Address"
-            android:maxLines="3"
-            android:paddingStart="5dp"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="@drawable/edittext_background"
+            android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name3" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:padding="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="@drawable/edittext_background"
+            android:hint="Enter Address"
+            android:maxLines="2"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/payment_phone_text" />
 
         <TextView
             android:id="@+id/textView8"

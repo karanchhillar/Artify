@@ -17,6 +17,7 @@ import com.example.aritify.adapter.PlaceOrderAdapter
 import com.example.aritify.databinding.ActivityPaymentScreenBinding
 import com.example.aritify.dataclasses.PlaceOrder
 import com.example.aritify.mvvm.ViewModel
+import com.squareup.picasso.Picasso
 
 class PaymentScreen : AppCompatActivity() {
 
@@ -39,6 +40,14 @@ class PaymentScreen : AppCompatActivity() {
 
         binding.paymentScreenBackButton.setOnClickListener {
             finish()
+        }
+
+        vm = ViewModelProvider(this).get(ViewModel::class.java)
+
+        vm.retrive_user_data {
+            binding.name3.setText(it.name)
+            binding.paymentPhoneText.setText(it.phone_number.toString())
+            binding.address.setText(it.address)
         }
 
         val myCart : String? = intent.getStringExtra("my_cart")

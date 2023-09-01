@@ -5,13 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.aritify.adapter.CartAdapter
 import com.example.aritify.cart.MyCart
 import com.example.aritify.databinding.ActivityMainBinding
 import com.example.aritify.fragment.HomeFragment
 import com.example.aritify.fragment.MicFragment
+import com.example.aritify.mvvm.ViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
+    private lateinit var vm : ViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         navView.itemIconTintList = null;
         val homefragment = HomeFragment()
         val micfragment = MicFragment()
+
+        vm = ViewModelProvider(this)[ViewModel::class.java]
+
+
 
 
         setFragment(homefragment)
@@ -49,6 +58,10 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        vm.myCartItem.observe(this, Observer {
+            navView.getOrCreateBadge(R.id.cart).number =  it.price.size
+        })
+
     }
     private fun setFragment(fragment: Fragment) {
 

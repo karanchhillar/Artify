@@ -101,7 +101,7 @@
             android:fontFamily="@font/poppins_light"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="4sp"
-            android:text="N Items"
+            android:text="0 Item"
             android:textColor="#4F4F4F"
             android:textSize="14sp" />
 

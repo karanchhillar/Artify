@@ -45,6 +45,7 @@
                 android:id="@+id/whislist"
                 android:layout_width="30dp"
                 android:layout_weight="1"
+                android:visibility="invisible"
                 android:layout_height="30dp"
                 android:src="@drawable/wishlist" />
         </LinearLayout>
