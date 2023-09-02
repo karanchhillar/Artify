@@ -2,6 +2,7 @@ package com.example.aritify.cart
 
 //import com.example.aritify.DataBinderMapperImpl
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
@@ -95,6 +96,20 @@ class PaymentScreen : AppCompatActivity() {
                 binding.totalPrice.text = "₹ $it"
                 binding.grandTotolPrice.text = "₹ $it"
             })
+        }
+
+        binding.paymentPayNow.setOnClickListener {
+            if(binding.radioButton1.isChecked){
+                val intent = Intent(this , PaymentActivity::class.java)
+                intent.putExtra("method" , "online")
+                startActivity(intent)
+            }
+            else{
+                val intent = Intent(this , PaymentActivity::class.java)
+                intent.putExtra("method" , "offline")
+                startActivity(intent)
+            }
+
         }
 
 
