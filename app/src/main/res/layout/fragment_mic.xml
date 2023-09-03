@@ -12,7 +12,7 @@
     app:stickyHeader="@id/mic_ll_1"
     >
 
-    <!--    toolbar for the app-->
+    <!--toolbar for the app-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -57,7 +57,6 @@
                     android:text="Delhi"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
-
             </LinearLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -71,12 +70,13 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cat_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
-            android:scrollbars="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,13 +86,13 @@
             android:id="@+id/mic_ll_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="20dp"
             android:background="#1a1a1a"
-            app:layout_constraintTop_toBottomOf="@+id/cat_recycler_view"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cat_recycler_view">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,24 +116,144 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/idViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_height="350dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/topComedyShowsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10sp"
+            android:textSize="20sp"
+            android:text="Top Comedy Shows"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mic_ll_3" />
 
-        <!--        <Button-->
-        <!--            android:id="@+id/logout_button"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="Log OUT"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/mic_ll_1"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintHorizontal_bias="0.5"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            />-->
+        <TextView
+            android:id="@+id/viewAllTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="10sp"
+            android:textSize="17sp"
+            android:text="View all>"
+            android:textColor="@color/dark_orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mic_ll_3" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/comedy_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/shows_item_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topComedyShowsTV"/>
+
+        <TextView
+            android:id="@+id/topMusicShowsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10sp"
+            android:textSize="20sp"
+            android:text="Top Music Shows"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comedy_recycler_view" />
+
+        <TextView
+            android:id="@+id/viewAllTV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="10sp"
+            android:textSize="17sp"
+            android:text="View all>"
+            android:textColor="@color/dark_orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comedy_recycler_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/music_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/shows_item_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topMusicShowsTV"/>
+
+        <TextView
+            android:id="@+id/topPoetryShowsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10sp"
+            android:textSize="20sp"
+            android:text="Top Poetry Shows"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/music_recycler_view" />
+
+        <TextView
+            android:id="@+id/viewAllTV3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="10sp"
+            android:textSize="17sp"
+            android:text="View all>"
+            android:textColor="@color/dark_orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/music_recycler_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/poetry_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/shows_item_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topPoetryShowsTV"/>
+
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log OUT"
+            android:layout_margin="20sp"
+            app:layout_constraintTop_toBottomOf="@id/poetry_recycler_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -1,5 +1,6 @@
 package com.example.aritify.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.example.aritify.AllProduct
 import com.example.aritify.ProductDetails
 import com.example.aritify.R
 import com.example.aritify.UserInformation
+import com.example.aritify.adapter.AllProductAdapter
 import com.example.aritify.databinding.FragmentHomeBinding
 import com.example.aritify.mvvm.ViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -42,6 +44,7 @@ class HomeFragment : Fragment() {
         return binding.root
 
     }
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -54,6 +57,17 @@ class HomeFragment : Fragment() {
             Picasso.get().load(it.profile_photo).into(binding.profilePhoto)
             binding.address.text = it.address
         }
+
+        val Best4Products = AllProductAdapter()
+        vm.myHomeItem.observe(requireActivity(), Observer {
+
+            Best4Products.setItemList1(it)
+            Best4Products.notifyDataSetChanged()
+            Toast.makeText(requireContext(), "Total item:${it.price.size}", Toast.LENGTH_SHORT).show()
+        })
+
+        binding.paidPromoRecyclerView.adapter = Best4Products
+
 
         var allProductArray: List<String>
 

@@ -24,6 +24,7 @@ class ViewModel : ViewModel() {
     init {
         retrive_item_data()
         retrive_cart_data()
+        retrive_Best_item_data()
     }
 
     fun upload_user_data(user : ArtifyUser){
@@ -41,6 +42,25 @@ class ViewModel : ViewModel() {
             }.addOnFailureListener {
                 Toast.makeText(MyApplication.getAppContext(), "FACING PROBLEM RIGHT NOW", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    val myHomeItem = MutableLiveData<AllProductsData>()
+    fun retrive_Best_item_data() =viewModelScope.launch (Dispatchers.IO){
+        firestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
+        try {
+            firestore.collection("Paid_Promotions").document("products")
+                .addSnapshotListener{value , error->
+
+                    if (error != null){
+                        return@addSnapshotListener
+                    }
+                    if (value!!.exists()) {
+                        val itemData = value.toObject(AllProductsData::class.java)
+                        myHomeItem.value = itemData!!
+                    }
+                }
+        }catch (_: Exception){}
     }
 
     val myItem = MutableLiveData<AllProductsData>()
