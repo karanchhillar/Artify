@@ -87,7 +87,8 @@ class RegisterPage : AppCompatActivity() {
                             }
                         auth.signOut()
                         binding.pg2.visibility = View.GONE
-                        startActivity(Intent(this, LoginPage::class.java))
+//                        startActivity(Intent(this, LoginPage::class.java))
+                        finish()
                     }
                     else{
                         binding.pg2.visibility = View.GONE

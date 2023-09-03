@@ -37,7 +37,7 @@ class ViewModel : ViewModel() {
         database.reference.child("ORDER DEATILS").child(Utils.getUidLoggedIn())
             .child(Utils.getTime().toString()).setValue(order)
             .addOnSuccessListener {
-                Toast.makeText(MyApplication.getAppContext(), "YOUR ORDER IS CONFIRMED \n ", Toast.LENGTH_LONG).show()
+                Toast.makeText(MyApplication.getAppContext(), "YOUR ORDER IS UPLOADED \n ", Toast.LENGTH_LONG).show()
             }.addOnFailureListener {
                 Toast.makeText(MyApplication.getAppContext(), "FACING PROBLEM RIGHT NOW", Toast.LENGTH_SHORT).show()
             }

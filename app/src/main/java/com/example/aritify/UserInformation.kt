@@ -81,10 +81,18 @@ class UserInformation : AppCompatActivity() {
 
             uploadImageToStorage()
 
-            startActivity(Intent(this , MainActivity::class.java))
+            val intent = Intent(this , MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //clear call stack
+            startActivity(intent)
             finish()
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        auth.signOut()
     }
 
     fun uploadImageToStorage(){

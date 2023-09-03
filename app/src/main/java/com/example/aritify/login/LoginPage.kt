@@ -75,9 +75,9 @@ class LoginPage : AppCompatActivity() {
                     if (task.isSuccessful){
                         val verification = auth.currentUser?.isEmailVerified
                         if (verification == true){
-                            startActivity(Intent(this, UserInformation::class.java))
+                            val intent = Intent(this, UserInformation::class.java)
+                            startActivity(intent)
                             binding.pg1.visibility = View.GONE
-                            finish()
                         }
                         else{
                             binding.pg1.visibility = View.GONE

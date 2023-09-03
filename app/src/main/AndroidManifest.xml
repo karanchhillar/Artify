@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Aritify"
         tools:targetApi="31">
         <activity
+            android:name=".order.OrderPlaced"
+            android:exported="false" />
+        <activity
             android:name=".cart.PaymentActivity"
             android:exported="false" />
         <activity
@@ -59,13 +62,12 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_ILgsfZCZoFIKMb" />
-        <!--        <meta-data-->
-        <!--            android:name="com.razorpay.ApiKey"-->
-        <!--            android:value="rzp_test_oGgVvfwCx5MJHz" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.razorpay.ApiKey" -->
+        <!-- android:value="rzp_test_oGgVvfwCx5MJHz" /> -->
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
