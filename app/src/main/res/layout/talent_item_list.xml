@@ -29,7 +29,7 @@
         android:maxLines="2"
         android:text="BANGLADESH vs SRILANKA - ICC MEN'S"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/show_image"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
         android:maxLines="1"
         android:text="Cricket"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -57,7 +57,7 @@
         android:maxLines="3"
         android:text="The stage is set for a compelling clash between Bangladesh and Sri Lanka."
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/category"
         app:layout_constraintTop_toBottomOf="@+id/category" />
@@ -72,7 +72,7 @@
         android:maxLines="1"
         android:text="₹ 750 onwards"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/show_description"
         app:layout_constraintTop_toBottomOf="@+id/show_description" />
 
@@ -87,7 +87,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="BOOK NOW"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

@@ -3,28 +3,32 @@ package com.example.aritify.fragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.aritify.AllProduct
-import com.example.aritify.ProductDetails
 import com.example.aritify.R
 import com.example.aritify.UserInformation
 import com.example.aritify.adapter.AllProductAdapter
+import com.example.aritify.cart.MyCart
 import com.example.aritify.databinding.FragmentHomeBinding
 import com.example.aritify.mvvm.ViewModel
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+
 
 class HomeFragment : Fragment() {
 
@@ -33,6 +37,8 @@ class HomeFragment : Fragment() {
     private lateinit var auth : FirebaseAuth
     private lateinit var vm : ViewModel
 
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +50,7 @@ class HomeFragment : Fragment() {
         return binding.root
 
     }
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged", "RtlHardcoded")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -57,6 +63,49 @@ class HomeFragment : Fragment() {
             Picasso.get().load(it.profile_photo).into(binding.profilePhoto)
             binding.address.text = it.address
         }
+
+        drawerLayout = binding.myDrawerLayout
+        val actionBarDrawerToggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, com.example.aritify.R.string.nav_open, com.example.aritify.R.string.nav_close)
+
+
+        val menuIcon = binding.menuBars
+        menuIcon.setOnClickListener { drawerLayout.openDrawer(Gravity.LEFT) }
+        val navigationView: NavigationView = binding.navDraw
+        navigationView.itemIconTintList = null
+
+        navigationView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.your_profile -> {
+                    startActivity(Intent(requireContext() , UserInformation::class.java))
+                }
+                R.id.your_cart -> {
+                    startActivity(Intent(requireContext() , MyCart::class.java))
+                }
+                R.id.your_orders -> {
+//                    startActivity(Intent(requireContext() , MyCart::class.java))
+                }
+                R.id.your_shows -> {
+//                    startActivity(Intent(requireContext() , MyCart::class.java))
+                }
+            }
+            true
+        }
+
+//        navigationView.setNavigationItemSelectedListener { menuItem ->
+//            // Handle menu item selected
+//            menuItem.isChecked = true
+//            drawerLayout.close()
+//            true
+//        }
+
+//        navigationView.setNavigationItemSelectedListener(requireActivity() as NavigationView.OnNavigationItemSelectedListener)
+        // pass the Open and Close toggle for the drawer layout listener
+        // to toggle the button
+//        drawerLayout.addDrawerListener(actionBarDrawerToggle)
+//        actionBarDrawerToggle.syncState()
+
+        // to make the Navigation drawer icon always appear on the action bar   yes
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val Best4Products = AllProductAdapter()
         vm.myHomeItem.observe(requireActivity(), Observer {
@@ -125,6 +174,12 @@ class HomeFragment : Fragment() {
             showAllProductCategory("All Products")
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            true
+        } else super.onOptionsItemSelected(item)
     }
 
     private fun intentValues(s: String, valueOfSearch: String) {

@@ -10,6 +10,7 @@ import com.example.aritify.dataclasses.AllProductsData
 import com.example.aritify.dataclasses.ArtifyUser
 import com.example.aritify.dataclasses.OrderDetail
 import com.example.aritify.dataclasses.PlaceOrder
+import com.example.aritify.dataclasses.ShowsData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -61,6 +62,31 @@ class ViewModel : ViewModel() {
                     }
                 }
         }catch (_: Exception){}
+    }
+
+//    val myShowItem = MutableLiveData<ShowsData>()
+    fun retrive_show_data(category : String) :MutableLiveData<ShowsData> {
+        val myShowItem = MutableLiveData<ShowsData>()
+        viewModelScope.launch(Dispatchers.IO)
+        {
+            firestore = FirebaseFirestore.getInstance()
+            auth = FirebaseAuth.getInstance()
+            try {
+                firestore.collection("Shows").document(category)
+                    .addSnapshotListener { value, error ->
+
+                        if (error != null) {
+                            return@addSnapshotListener
+                        }
+                        if (value!!.exists()) {
+                            val itemData = value.toObject(ShowsData::class.java)
+                            myShowItem.value = itemData!!
+                        }
+                    }
+            } catch (_: Exception) {
+            }
+        }
+        return myShowItem
     }
 
     val myItem = MutableLiveData<AllProductsData>()

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_item"
+        android:title="Artify">
+        <menu>
+            <item
+                android:id="@+id/your_profile"
+                android:icon="@drawable/your_profile"
+                android:title="Profile"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/your_cart"
+                android:icon="@drawable/your_cart"
+                android:title="Cart"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/your_orders"
+                android:icon="@drawable/your_orders"
+                android:title="Your Order"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/your_shows"
+                android:icon="@drawable/your_shows"
+                android:title="Your Shows"
+                android:checkable="true"/>
+        </menu>
+    </item>
+
+</menu>

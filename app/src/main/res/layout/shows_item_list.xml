@@ -9,6 +9,7 @@
     >
     
     <ImageView
+        android:id="@+id/show_image"
         android:layout_width="150dp"
         android:layout_height="225dp"
         android:src="@drawable/app_logo"
@@ -16,6 +17,7 @@
         />
 
     <TextView
+        android:id="@+id/show_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Wed, 6 Sept"
@@ -26,6 +28,7 @@
         android:textSize="16sp"/>
     
     <TextView
+        android:id="@+id/show_name"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="Jo Bolta Hai Wohi Hota Hai Ft. Harsh Gujral in the house"
@@ -38,6 +41,7 @@
         android:textColor="#333333"
         android:maxLines="2"/>
     <TextView
+        android:id="@+id/show_venue"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="The Laugh Store: Venue"
@@ -50,6 +54,7 @@
         android:maxLines="1"/>
 
     <TextView
+        android:id="@+id/ticket_price"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="₹699 onwards"
