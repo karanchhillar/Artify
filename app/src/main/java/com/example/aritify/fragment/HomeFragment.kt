@@ -25,6 +25,8 @@ import com.example.aritify.adapter.AllProductAdapter
 import com.example.aritify.cart.MyCart
 import com.example.aritify.databinding.FragmentHomeBinding
 import com.example.aritify.mvvm.ViewModel
+import com.example.aritify.orders.YourOrders
+import com.example.aritify.orders.YourShows
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
@@ -82,10 +84,10 @@ class HomeFragment : Fragment() {
                     startActivity(Intent(requireContext() , MyCart::class.java))
                 }
                 R.id.your_orders -> {
-//                    startActivity(Intent(requireContext() , MyCart::class.java))
+                    startActivity(Intent(requireContext() , YourOrders::class.java))
                 }
                 R.id.your_shows -> {
-//                    startActivity(Intent(requireContext() , MyCart::class.java))
+                    startActivity(Intent(requireContext() , YourShows::class.java))
                 }
             }
             true

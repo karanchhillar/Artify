@@ -8,6 +8,7 @@ import com.example.aritify.ProductDetails
 import com.example.aritify.databinding.ShowsItemListBinding
 import com.example.aritify.dataclasses.AllProductsData
 import com.example.aritify.dataclasses.ShowsData
+import com.example.aritify.shows.ShowsDetails
 import com.squareup.picasso.Picasso
 
 class ShowsAdapter  : RecyclerView.Adapter<ShowViewHolder>()  {
@@ -36,6 +37,8 @@ class ShowsAdapter  : RecyclerView.Adapter<ShowViewHolder>()  {
             // you can trust the adapter position
             // do whatever you intend to do with this position
 
+            val currentShowID : String = itemList.show_id[n]
+            val currentShowHostID : String = itemList.show_host_id[n]
             val currentShowName : String = itemList.show_name[n]
             val currentShowImage : String = itemList.show_image[n]
             val currentShowVenue : String = itemList.show_venue[n]
@@ -47,6 +50,7 @@ class ShowsAdapter  : RecyclerView.Adapter<ShowViewHolder>()  {
             val currentShowCategory : String = itemList.show_category[n]
             val currentShowDescription: String = itemList.show_description[n]
             val currentTicketPrice: Int = itemList.ticket_price[n]
+            val currentNoOfSeats: Int = itemList.no_of_seats[n]
 
             holder.showName.text = currentShowName
             holder.showVenue.text = currentShowVenue
@@ -55,7 +59,9 @@ class ShowsAdapter  : RecyclerView.Adapter<ShowViewHolder>()  {
             Picasso.get().load(currentShowImage).into(holder.showImage)
 
             holder.itemView.setOnClickListener {
-                val intent = Intent(holder.itemView.context , ProductDetails::class.java)
+                val intent = Intent(holder.itemView.context , ShowsDetails::class.java)
+                intent.putExtra("currentShowID" , currentShowID)
+                intent.putExtra("currentShowHostID" , currentShowHostID)
                 intent.putExtra("currentShowName" , currentShowName)
                 intent.putExtra("currentShowImage" , currentShowImage)
                 intent.putExtra("currentShowVenue" , currentShowVenue)
@@ -67,6 +73,7 @@ class ShowsAdapter  : RecyclerView.Adapter<ShowViewHolder>()  {
                 intent.putExtra("currentShowCategory" , currentShowCategory)
                 intent.putExtra("currentShowDescription" , currentShowDescription)
                 intent.putExtra("currentTicketPrice" , currentTicketPrice)
+                intent.putExtra("currentNoOfSeats" , currentNoOfSeats)
 
                 holder.itemView.context.startActivity(intent)
             }
