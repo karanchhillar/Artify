@@ -69,18 +69,18 @@ class MicFragment : Fragment(){
 
         // on below line we are setting
         // adapter to our view pager.
-        viewPager.adapter = viewPagerAdapter
+//        viewPager.adapter = viewPagerAdapter
+//
+//        val showsAdapter = ShowsAdapter()
+//
+//        vm.retrive_show_data("comedy").observe(requireActivity(), Observer {
+//            showsAdapter.setItemList1(it)
+//            showsAdapter.notifyDataSetChanged()
+//        })
 
-        val showsAdapter = ShowsAdapter()
-
-        vm.retrive_show_data("comedy").observe(requireActivity(), Observer {
-            showsAdapter.setItemList1(it)
-            showsAdapter.notifyDataSetChanged()
-        })
-
-        binding.comedyRecyclerView.adapter = showsAdapter
-        binding.musicRecyclerView.adapter = showsAdapter
-        binding.poetryRecyclerView.adapter = showsAdapter
+//        binding.comedyRecyclerView.adapter = showsAdapter
+//        binding.musicRecyclerView.adapter = showsAdapter
+//        binding.poetryRecyclerView.adapter = showsAdapter
 
     }
 

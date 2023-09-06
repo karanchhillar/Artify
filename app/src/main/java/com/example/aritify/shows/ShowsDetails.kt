@@ -29,9 +29,9 @@ class ShowsDetails : AppCompatActivity() {
         val currentShowHostID : String? = intent.getStringExtra("currentShowHostID")
         val currentShowName : String? = intent.getStringExtra("currentShowName")
         val currentShowImage : String? = intent.getStringExtra("currentShowImage")
+        val currentNoOfSeats: String? = intent.getStringExtra("currentNoOfSeats")
         val currentShowVenue: String? = intent.getStringExtra("currentShowVenue")
         val currentTicketPrice: Int = intent.getIntExtra("currentTicketPrice" , 0)
-        val currentNoOfSeats: Int = intent.getIntExtra("currentNoOfSeats" , 0)
         val currentShowDate: String? = intent.getStringExtra("currentShowDate")
         val currentShowTiming: String? = intent.getStringExtra("currentShowTiming")
         val currentShowDuration: String? = intent.getStringExtra("currentShowDuration")
@@ -53,25 +53,26 @@ class ShowsDetails : AppCompatActivity() {
         binding.showVenue1.text = currentShowVenue.toString()
         binding.showTvPrice.text = "₹ $currentTicketPrice"
 
-        binding.showImgplusicon.setOnClickListener {
-
-            val curr_val = binding.showSetQuantity.text.toString().toInt()
-            if (curr_val == currentNoOfSeats.toString().toInt()){
-                Toast.makeText(this, "Can't Book Tickets More", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                binding.showSetQuantity.text = (curr_val+1).toString()
-            }
-        }
-        binding.showImgminusicon.setOnClickListener {
-            val curr_val = binding.showSetQuantity.text.toString().toInt()
-            if (curr_val == 1){
-                Toast.makeText(this, "Can't Be Less Then 0", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                binding.showSetQuantity.text = (curr_val-1).toString()
-            }
-        }
+//        binding.showImgplusicon.setOnClickListener {
+//
+//            val curr_val = 75
+//            if (curr_val == currentNoOfSeats.toString().toInt()){
+//                Toast.makeText(this, "Can't Book Tickets More", Toast.LENGTH_SHORT).show()
+//            }
+//            else{
+//                binding.showSetQuantity.text = (curr_val+1).toString()
+//            }
+//        }
+//        binding.showImgminusicon.setOnClickListener {
+////            val curr_val = binding.showSetQuantity.text.toString().toInt()
+//            var curr_val = 75
+//            if (curr_val == 1){
+//                Toast.makeText(this, "Can't Be Less Then 0", Toast.LENGTH_SHORT).show()
+//            }
+//            else{
+//                binding.showSetQuantity.text = (curr_val-1).toString()
+//            }
+//        }
 
         binding.showsProductDetailsBackButton.setOnClickListener {
             finish()
