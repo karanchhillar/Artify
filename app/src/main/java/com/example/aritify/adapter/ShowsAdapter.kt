@@ -50,7 +50,7 @@ class ShowsAdapter  : RecyclerView.Adapter<ShowViewHolder>()  {
             val currentShowCategory : String = itemList.show_category[n]
             val currentShowDescription: String = itemList.show_description[n]
             val currentTicketPrice: Int = itemList.ticket_price[n]
-            val currentNoOfSeats: Int = itemList.no_of_seats[n]
+//            val currentNoOfSeats: String = itemList.no_of_seats[n]
 
             holder.showName.text = currentShowName
             holder.showVenue.text = currentShowVenue
@@ -73,7 +73,7 @@ class ShowsAdapter  : RecyclerView.Adapter<ShowViewHolder>()  {
                 intent.putExtra("currentShowCategory" , currentShowCategory)
                 intent.putExtra("currentShowDescription" , currentShowDescription)
                 intent.putExtra("currentTicketPrice" , currentTicketPrice)
-                intent.putExtra("currentNoOfSeats" , currentNoOfSeats)
+//                intent.putExtra("currentNoOfSeats" , currentNoOfSeats)
 
                 holder.itemView.context.startActivity(intent)
             }

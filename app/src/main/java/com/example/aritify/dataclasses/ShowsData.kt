@@ -4,7 +4,7 @@ data class ShowsData(
     var show_id : List<String> = emptyList(),
     var show_name :  List<String> = emptyList(),
     var ticket_price : List<Int> = emptyList(),
-    var no_of_seats : List<Int> = emptyList(),
+//    var no_of_seats : List<String> = emptyList(),
     var show_description : List<String> = emptyList(),
     var show_image : List<String> = emptyList(),
     var show_venue : List<String> = emptyList(),
