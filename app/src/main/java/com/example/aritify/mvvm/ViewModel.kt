@@ -1,5 +1,7 @@
 package com.example.aritify.mvvm
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,7 +14,11 @@ import com.example.aritify.dataclasses.OrderDetail
 import com.example.aritify.dataclasses.PlaceOrder
 import com.example.aritify.dataclasses.ShowsData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,6 +32,7 @@ class ViewModel : ViewModel() {
         retrive_item_data()
         retrive_cart_data()
         retrive_Best_item_data()
+//        yourOrderData()
     }
 
     fun upload_user_data(user : ArtifyUser){
@@ -44,6 +51,19 @@ class ViewModel : ViewModel() {
                 Toast.makeText(MyApplication.getAppContext(), "FACING PROBLEM RIGHT NOW", Toast.LENGTH_SHORT).show()
             }
     }
+
+//    val myOrderPlacedItem = MutableLiveData<OrderDetail>()
+//    var myOrderPlacedItem = ArrayList<OrderDetail>()
+//    fun yourOrderData() =viewModelScope.launch (Dispatchers.IO){
+//        database = FirebaseDatabase.getInstance()
+//        database.reference.child("ORDER DEATILS").child(Utils.getUidLoggedIn())
+//            .get().addOnSuccessListener {
+//                if(it != null){
+//                    val itemData1 = it.value
+//                    myOrderPlacedItem. = itemData1 as OrderDetail?
+//                }
+//            }
+//    }
 
     val myHomeItem = MutableLiveData<AllProductsData>()
     fun retrive_Best_item_data() =viewModelScope.launch (Dispatchers.IO){
@@ -64,9 +84,12 @@ class ViewModel : ViewModel() {
         }catch (_: Exception){}
     }
 
-//    val myShowItem = MutableLiveData<ShowsData>()
-    fun retrive_show_data(category : String) :MutableLiveData<ShowsData> {
-        val myShowItem = MutableLiveData<ShowsData>()
+    val myViewPagerShowItem = MutableLiveData<ShowsData>()
+    val myComedyShowItem = MutableLiveData<ShowsData>()
+    val myMusicShowItem = MutableLiveData<ShowsData>()
+    val myPoetryShowItem = MutableLiveData<ShowsData>()
+    fun retrive_show_data(category : String , myShowItem : MutableLiveData<ShowsData>) :MutableLiveData<ShowsData> {
+//        val myShowItem = MutableLiveData<ShowsData>()
         viewModelScope.launch(Dispatchers.IO)
         {
             firestore = FirebaseFirestore.getInstance()

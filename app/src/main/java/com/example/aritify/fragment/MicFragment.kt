@@ -28,7 +28,7 @@ class MicFragment : Fragment(){
 
     lateinit var viewPager: ViewPager
     lateinit var viewPagerAdapter: ViewPagerAdapter
-    lateinit var imageList: List<Int>
+//    lateinit var imageList: List<Int>
     private lateinit var vm : ViewModel
 
     override fun onCreateView(
@@ -54,33 +54,54 @@ class MicFragment : Fragment(){
             activity?.finish()
         }
 
-        imageList = ArrayList<Int>()
-        imageList = imageList + R.drawable.img_virat
-        imageList = imageList + R.drawable.women_category
-        imageList = imageList + R.drawable.app_logo
-        imageList = imageList + R.drawable.img_other
-        imageList = imageList + R.drawable.img_painting
-        imageList = imageList + R.drawable.img_real_home
+//        imageList = ArrayList<Int>()
+//        imageList = imageList + R.drawable.img_virat
+//        imageList = imageList + R.drawable.women_category
+//        imageList = imageList + R.drawable.app_logo
+//        imageList = imageList + R.drawable.img_other
+//        imageList = imageList + R.drawable.img_painting
+//        imageList = imageList + R.drawable.img_real_home
 
         viewPager = binding.idViewPager
 
-        viewPagerAdapter = ViewPagerAdapter(requireContext(), imageList)
+        viewPagerAdapter = ViewPagerAdapter(requireContext())
 
 
         // on below line we are setting
         // adapter to our view pager.
         viewPager.adapter = viewPagerAdapter
 
-        val showsAdapter = ShowsAdapter()
-
-        vm.retrive_show_data("comedy").observe(requireActivity(), Observer {
-            showsAdapter.setItemList1(it)
-            showsAdapter.notifyDataSetChanged()
+        vm.retrive_show_data("Comedy" , vm.myViewPagerShowItem).observe(requireActivity(), Observer {
+            viewPagerAdapter.setItemList1(it)
+            viewPagerAdapter.notifyDataSetChanged()
         })
 
-        binding.comedyRecyclerView.adapter = showsAdapter
-        binding.musicRecyclerView.adapter = showsAdapter
-        binding.poetryRecyclerView.adapter = showsAdapter
+
+
+
+
+        val showsAdapterComedy = ShowsAdapter()
+        val showsAdapterMusic = ShowsAdapter()
+        val showsAdapterPoetry = ShowsAdapter()
+
+        vm.retrive_show_data("Comedy" , vm.myComedyShowItem).observe(requireActivity(), Observer {
+            showsAdapterComedy.setItemList1(it)
+            showsAdapterComedy.notifyDataSetChanged()
+        })
+
+        binding.comedyRecyclerView.adapter = showsAdapterComedy
+
+        vm.retrive_show_data("Music" , vm.myMusicShowItem).observe(requireActivity(), Observer {
+            showsAdapterMusic.setItemList1(it)
+            showsAdapterMusic.notifyDataSetChanged()
+        })
+        binding.musicRecyclerView.adapter = showsAdapterMusic
+
+        vm.retrive_show_data("Poetry" , vm.myPoetryShowItem).observe(requireActivity(), Observer {
+            showsAdapterPoetry.setItemList1(it)
+            showsAdapterPoetry.notifyDataSetChanged()
+        })
+        binding.poetryRecyclerView.adapter = showsAdapterPoetry
 
     }
 
